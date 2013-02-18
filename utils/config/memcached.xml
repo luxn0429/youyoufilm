@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<memcached>
+	<!-- cache配置文件，配置cache中的memcachedclient
+		name : 缓存名字
+		observable:被观察缓存名，如果observable不为空，则表明缓存为观察者，被观察者一定要在观察者之前被初始化，在配置文件中，
+		被观察者一定要写在观察者之前，多个被观察者之间使用逗号","间隔；如果observalbe为空则表明缓存是个被观察者;
+		其他字段意义参考com.wanmei.sns.memcache.impl.MemcachedConfig中说明
+	-->
+
+	<cache name="shenmo_comment_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<cache name="shenmo_gmb2comment_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+
+	<cache name="shenmo_miniblog_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+
+	<cache name="shenmo_miniblog_counter_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+
+	<cache name="shenmo_role_counter_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<cache name="shenmo_atrolegmb_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+
+	<cache name="shenmo_user2collectgmb_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+
+	<cache name="shenmo_user2friendgmb_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+		
+	<cache name="shenmo_user2miniblog_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<cache name="shenmo_mycommented_gmb_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<cache name="shenmo_commentedme_gmb_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<cache name="shenmo_visitor_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	
+	<!-- topic-related cache -->
+	<cache name="shenmo_topic_manual_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_topic_gmblist_latest_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_topic_gridlist_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_topic_related_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_topic_period_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_topic_mytopics_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<!-- 神魔微博 编辑话题 v2 -->
+	<cache name="sm_t_m_v2" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<!-- award-related cache -->
+	<cache name="shenmo_award_myawards_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<!-- official-gmb-related cache -->
+	<cache name="shenmo_gmb_official_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<!-- Cache utilized for mobile -->
+	<cache name="shenmo_mobile_access_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	<cache name="shenmo_mobile_app_cache" compressEnable="true"
+		defaultEncoding="UTF-8" socketpool="pool0">
+		<classname>com.wanmei.sns.memcache.impl.PrimaryCache</classname>
+	</cache>
+	
+	<!-- 带有更新监听器的缓存,只有PrimaryListenerCache -->
+	<listener></listener>
+
+	<!-- memecache 客户端 socket池配置 -->
+	<socketpool name="pool0" failover="true" initConn="5" minConn="5"
+		maxConn="250" maintSleep="0" nagle="false" socketTO="3000"
+		aliveCheck="true">
+		<servers>10.68.40.11:11212,10.68.40.11:11212</servers>
+	</socketpool>
+</memcached>

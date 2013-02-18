@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3215"
+   name=""
+   committed-date="2010-06-04T08:33:25.030620Z"
+   url="http://svnhost.com/repos/sns/DataApplication/snsdata/src/com/danga/MemCached"
+   last-author="luxiangning"
+   kind="dir"
+   repos="http://svnhost.com/repos/sns"
+   revision="5104"/>
+<entry
+   committed-rev="3215"
+   name="Logger.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="af6619b320b057c0fe6f5540a9c7ec17"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SockIOPool.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="66ca0ef8c27905952ea9be187571e542"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="LineInputStream.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="84846721546df73a7acf3ac939d0ecb4"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="MemCachedClient.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="19584c480a1d860ebf679ef285c84ddc"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="ContextObjectInputStream.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="fc2eb46c856108903af442559fe31843"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="ErrorHandler.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="dfc1f0e3237af50f3b81c9c3d4a2017a"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="NestedIOException.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="e8b2cccf32a505df79cb5a59cb4afbdc"
+   last-author="luxiangning"
+   kind="file"/>
+</wc-entries>

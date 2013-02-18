@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3215"
+   name=""
+   committed-date="2010-06-04T08:33:25.030620Z"
+   url="http://svnhost.com/repos/sns/DataApplication/snsdata/src/com/schooner/MemCached"
+   last-author="luxiangning"
+   kind="dir"
+   repos="http://svnhost.com/repos/sns"
+   revision="5104"/>
+<entry
+   committed-rev="3215"
+   name="AscIIUDPClient.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="244175a90245005bd699d9fe43ab19f1"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SchoonerSockIOPool.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="88c388b600456f2cead5ab6d31369405"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="BinaryClient.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="e24703af4ad64f962e23181268943bfe"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="NativeHandler.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="66a1dbdf53507cd935bc06cd16daf143"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="TransCoder.java"
+   text-time="2010-05-31T08:52:14.218750Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="eaeef298a2f8df3d4333d0293c42ff7c"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="MemcachedItem.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="903dc9977485484a2629bca03a83700e"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="AscIIClient.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="3dfc442c0e3e2eebf3736a1d2f1ac07b"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="AbstractTransCoder.java"
+   text-time="2010-05-31T08:52:14.171875Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="b672b3f364c6114036f9af6e0f3c06e7"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SchoonerSockIO.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="251a8ee0039b5abdee704e9b7c965014"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="ByteBufArrayInputStream.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="96e34a906768905f3efb54c5f55d7324"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="ObjectTransCoder.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="5d6e9b5aec1944492dc514a937a358ef"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SockInputStream.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="d386ad39bbbbed2ec84cbfc9ff96c65f"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SockOutputStream.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="c945c7177c0f9bcc1253e44f01964aab"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   name="command"
+   kind="dir"/>
+</wc-entries>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3215"
+   name=""
+   committed-date="2010-06-04T08:33:25.030620Z"
+   url="http://svnhost.com/repos/sns/DataApplication/snsdata/src/com/schooner/MemCached/command"
+   last-author="luxiangning"
+   kind="dir"
+   repos="http://svnhost.com/repos/sns"
+   revision="5104"/>
+<entry
+   committed-rev="3215"
+   name="DeletionCommand.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="32ba269fa54ef2517b5b7c8a7a1920f2"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="StorageCommand.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="226c894aec9ac6fdd88cefbbedc15e8e"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SyncAllCommand.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="a8c4592d889528b164304d8efc4adff1"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="IncrdecrCommand.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="6407318936097faf66ebd224f478e5b2"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="FlushAllCommand.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="58408db413593798fc820f4d767645c0"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="SyncCommand.java"
+   text-time="2010-05-31T08:52:14.203125Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="ef39d22674f54f1e8a503e1e64484278"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="RetrievalCommand.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="f423a0049c711ab16ec968c965099bad"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="StatsCommand.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="da9663714385841996eb71319b899dcc"
+   last-author="luxiangning"
+   kind="file"/>
+<entry
+   committed-rev="3215"
+   name="Command.java"
+   text-time="2010-05-31T08:52:14.187500Z"
+   committed-date="2010-06-04T08:33:25.030620Z"
+   checksum="0398a19a598269f2d7b380dbaeade914"
+   last-author="luxiangning"
+   kind="file"/>
+</wc-entries>

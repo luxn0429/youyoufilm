@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3215"
+   name=""
+   committed-date="2010-06-04T08:33:25.030620Z"
+   url="http://svnhost.com/repos/sns/DataApplication/snsdata/src/com/schooner"
+   last-author="luxiangning"
+   kind="dir"
+   repos="http://svnhost.com/repos/sns"
+   revision="5104"/>
+<entry
+   name="MemCached"
+   kind="dir"/>
+</wc-entries>
