@@ -5,22 +5,17 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.mortbay.http.SocketListener;
-import org.mortbay.http.handler.NotFoundHandler;
-import org.mortbay.http.handler.ResourceHandler;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.servlet.Default;
-import org.mortbay.jetty.servlet.HashSessionManager;
-import org.mortbay.jetty.servlet.ServletHolder;
-import org.mortbay.jetty.servlet.SessionManager;
-import org.mortbay.jetty.servlet.WebApplicationContext;
-import org.mortbay.jetty.servlet.WebApplicationHandler;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.SessionManager;
+import org.eclipse.jetty.server.nio.SelectChannelConnector;
+import org.eclipse.jetty.webapp.WebAppContext;
+
 
 
 public class JettyApplication {
     private final Server          httpServer        = new Server ();
 
-    private WebApplicationContext queryContext      = null;
+    private WebAppContext queryContext      = null;
 
     private static final JettyApplication instance = new JettyApplication();
     
@@ -33,18 +28,15 @@ public class JettyApplication {
 
     public void initServer () throws IllegalAccessException, InstantiationException, ClassNotFoundException, UnknownHostException {
 
-        final SocketListener querySocketListener = new SocketListener ();
-        querySocketListener.setPort (WebServerConfiguration.getInstance().getPort());
-        querySocketListener.setInetAddress (InetAddress.getByName(WebServerConfiguration.getInstance().getAddress()));
-
-        querySocketListener.setTcpNoDelay (true);
-        querySocketListener.setName ("StatsThreads");
-        querySocketListener.setLingerTimeSecs (10);
-        httpServer.addListener (querySocketListener);
+    	SelectChannelConnector connector = new SelectChannelConnector();
+    	connector.setPort(WebServerConfiguration.getInstance().getPort());
+    	connector.setHost(WebServerConfiguration.getInstance().getAddress());
+    	connector.setMaxIdleTime(30000);
+        connector.setRequestHeaderSize(8192);
 
         SessionManager sessionManager;
 
-        queryContext = new WebApplicationContext ();
+        queryContext = new WebAppContext ();
         queryContext.setContextPath ("/");
         // following will remove jsp servlet
         queryContext.setDefaultsDescriptor (null);

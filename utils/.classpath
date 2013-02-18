@@ -11,7 +11,8 @@
 	<classpathentry kind="lib" path="lib/jotm-standalone.jar"/>
 	<classpathentry kind="lib" path="lib/xapool.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.0-beta.jar"/>
-	<classpathentry kind="lib" path="lib/org.mortbay.jetty.jar"/>
 	<classpathentry kind="lib" path="lib/memcached-2.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-all-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
