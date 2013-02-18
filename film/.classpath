@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/utils/lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/commons-dbcp-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/commons-lang3-3.0-beta.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/hessian-4.0.3.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jotm-client.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jotm-core.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jotm-datasource.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jotm-jms.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jotm-standalone.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jsoup-1.6.3.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/lucene-core-3.0.0.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/memcached-2.4.2.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/org.mortbay.jetty.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/xapool.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/utils"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
