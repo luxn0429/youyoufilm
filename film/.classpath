@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="/utils/lib/commons-pool-1.6.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/hessian-4.0.3.jar"/>
-	<classpathentry kind="lib" path="/utils/lib/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/jotm-client.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/jotm-core.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/jotm-datasource.jar"/>
@@ -21,8 +20,10 @@
 	<classpathentry kind="lib" path="/utils/lib/lucene-core-3.0.0.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/memcached-2.4.2.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/mysql-connector-java-5.1.6-bin.jar"/>
-	<classpathentry kind="lib" path="/utils/lib/org.mortbay.jetty.jar"/>
 	<classpathentry kind="lib" path="/utils/lib/xapool.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/utils"/>
+	<classpathentry kind="lib" path="/utils/lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/jetty-all-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="/utils/lib/asm-3.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

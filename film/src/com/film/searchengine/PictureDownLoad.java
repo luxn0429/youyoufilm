@@ -7,8 +7,13 @@ import java.io.IOException;
 import java.net.URL;
 
 public class PictureDownLoad {
-	private static final String PATH = "WebContent/pic/";
+	private static final String PATH = "web/pic/";
 
+	/**
+	 * 下载图片
+	 * @param imageUrl	图片链接
+	 * @return			图片保存位置
+	 */
 	public static String downLoadPic(String imageUrl){
 		
 		DataInputStream dis = null;
@@ -18,8 +23,10 @@ public class PictureDownLoad {
 		    //打开网络输入流
 		    dis = new DataInputStream(url.openStream());
 		    File dir = new File(PATH);
+		    ////i为文件在此文件夹下的编号
 		    int i= dir.listFiles().length+1;
 		    String sufix = imageUrl.substring(imageUrl.lastIndexOf(".")+1);
+		    
 		    //建立一个新的文件
 		    String fileName = i+"."+sufix;
 		    fos = new FileOutputStream(new File(PATH+fileName));

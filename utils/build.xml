@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 <project basedir="." default="build" name="utils">
-
 	<!-- Parameters -->
 	<property name="jar_name" value="utils" />
 	<property name="target" value="1.5" />
@@ -17,9 +16,6 @@
 
 	<property name="utils_project_dir" value="../utils" />
 
-	<property name="version_java" value="${src_dir}/com/kmsocial/utils/version/SvnVersion.java" />
-	<property name="version_dir" value="./" />
-
 	<path id="classpath">
 		<pathelement location="${build_dir}" />
 		<fileset dir="${lib_dir}">
@@ -27,21 +23,8 @@
 		</fileset>
 	</path>
 
-	<!-- 从服务器上获取最新的kongming_sdk.jar weibo_core.jar weibo_utils.jar -->
-	<target name="get_latest_weibo_core">
-
-	
-		<scp file="root:kmsocialzhongdian120814test@d024.kmtongji.com:/mnt/local1/weibo_builds/latest/kongming_sdk.jar" todir="${lib_dir}" />
-		<scp file="root:kmsocialzhongdian120814test@d024.kmtongji.com:/mnt/local1/weibo_builds/latest/weibo_core.jar" todir="${lib_dir}" />
-		<scp file="root:kmsocialzhongdian120814test@d024.kmtongji.com:/mnt/local1/weibo_builds/latest/weibo_utils.jar" todir="${lib_dir}" />
-		<scp file="root:kmsocialzhongdian120814test@d024.kmtongji.com:/mnt/local1/weibo_builds/latest/build.txt" todir="${lib_dir}" />
-
-		<echo message="Download latest kongming_sdk.jar weibo_core.jar weibo_utils.jar from d024: /mnt/local1/weibo_builds/latest/" />
-
-	</target>
-
 	<!-- Initialize -->
-	<target name="init" depends="makeVersion, get_latest_weibo_core">
+	<target name="init">
 		<echo message="Initializing ..." />
 		<delete dir="${build_dir}" />
 		<mkdir dir="${build_dir}" />
@@ -64,28 +47,4 @@
 	<target name="clean">
 		<delete dir="${build_dir}" />
 	</target>
-
-
-	<!-- SVN Version -->
-
-	<path id="ant.classpath">
-		<fileset dir="${ant.library.dir}" includes="*.jar" />
-	</path>
-	<taskdef name="svn" classname="org.tigris.subversion.svnant.SvnTask" classpathref="ant.classpath" />
-
-	<!-- For each project build create a new version of Version.java with SVN info -->
-
-	<target name="makeVersion" description="Create a new version of Version.java with SVN info">
-
-		<svn javahl="false">
-			<status path="${version_dir}/.." revisionProperty="revision" />
-		</svn>
-
-		<!-- Change the file to generate a new revision of it -->
-
-		<replace file="${version_java}" token="@@" value="${revision}" />
-
-		<echo message="Created revision ${revision}" />
-	</target>
-
 </project>

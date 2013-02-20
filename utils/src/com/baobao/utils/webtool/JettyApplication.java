@@ -1,21 +1,25 @@
 package com.baobao.utils.webtool;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.eclipse.jetty.annotations.AnnotationConfiguration;
+import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.SessionManager;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 
 
 public class JettyApplication {
+	
+	static private final String CONTEXT_PATH = "/";
+	static private final String PROJECT_HOME = System.getenv("MY_WORKSPACE_HOME") + "/WebServices";
+	static public final int PORT = 8080;
+	
     private final Server          httpServer        = new Server ();
-
-    private WebAppContext queryContext      = null;
 
     private static final JettyApplication instance = new JettyApplication();
     
@@ -29,59 +33,32 @@ public class JettyApplication {
     public void initServer () throws IllegalAccessException, InstantiationException, ClassNotFoundException, UnknownHostException {
 
     	SelectChannelConnector connector = new SelectChannelConnector();
-    	connector.setPort(WebServerConfiguration.getInstance().getPort());
-    	connector.setHost(WebServerConfiguration.getInstance().getAddress());
+    	connector.setPort(PORT);
+    	//connector.setHost();
     	connector.setMaxIdleTime(30000);
         connector.setRequestHeaderSize(8192);
+        httpServer.setConnectors(new Connector[] { connector });
 
-        SessionManager sessionManager;
-
-        queryContext = new WebAppContext ();
-        queryContext.setContextPath ("/");
-        // following will remove jsp servlet
-        queryContext.setDefaultsDescriptor (null);
-
-        final WebApplicationHandler webapp = new WebApplicationHandler ();
-        webapp.initialize (queryContext);
-
-        // Default Servlet
-        initDefaultServlet (queryContext);
-
-        addServlet (webapp);
-
-        webapp.setAutoInitializeServlets (true);
-
-        // Session handling
-        sessionManager = new HashSessionManager ();
-        // sessionManager.setMaxInactiveInterval (sessionTimeout);
-        webapp.setSessionManager (sessionManager);
-
-        queryContext.addHandler (webapp);
-
-        final ResourceHandler zapResHandler = new ResourceHandler ();
-
-        zapResHandler.setDirAllowed (false);
-        zapResHandler.setAcceptRanges (true);
-        queryContext.addHandler (zapResHandler);
-        queryContext.addHandler (new NotFoundHandler ());
-        httpServer.addContext (queryContext);
-    }
-
-    private void addServlet (WebApplicationHandler webapp){
-    	Map<String,String> servletMap = ServletConfiguration.getInstance().getServletMap();
-    	for(Map.Entry<String, String> entry:servletMap.entrySet()){
-    		 webapp.addServlet(entry.getKey(),entry.getValue());
-    	}
-    }
-
-    private void initDefaultServlet (WebApplicationContext actContext) throws IllegalAccessException,
-            InstantiationException, ClassNotFoundException {
-
-        final ServletHolder defaultServlet = actContext.addServlet ("default-serlvet", WebServerConfiguration.getInstance().getDefault_servlet(), Default.class.getName ());
-        Map<String,String> params = WebServerConfiguration.getInstance().getParams();
-        for(Map.Entry<String, String> entry:params.entrySet()){
-        	defaultServlet.setInitParameter(entry.getKey(), entry.getValue());
-        }
+        WebAppContext queryContext = new WebAppContext ();
+        queryContext.setDescriptor("web/WEB-INF/web.xml");
+        queryContext.setResourceBase("web");
+        queryContext.setContextPath(CONTEXT_PATH);
+        queryContext.setBaseResource(Resource.newClassPathResource("")); 
+        queryContext.setClassLoader(Thread.currentThread().getContextClassLoader()); 
+        queryContext.setConfigurationDiscovered(true);  
+        queryContext.setParentLoaderPriority(true);  
+        
+        /*queryContext.setConfigurations(new Configuration[] {
+                new AnnotationConfiguration(), new WebXmlConfiguration(),
+                new WebInfConfiguration(), new TagLibConfiguration(),
+                new PlusConfiguration(), new MetaInfConfiguration(),
+                new FragmentConfiguration(), new EnvConfiguration() });*/
+        httpServer.setHandler(queryContext);
+        
+        System.out.println(queryContext.getContextPath());  
+        System.out.println(queryContext.getDescriptor());  
+        System.out.println(queryContext.getResourceBase());  
+        System.out.println(queryContext.getBaseResource());  
     }
 
       
