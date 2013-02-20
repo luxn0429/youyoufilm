@@ -194,8 +194,23 @@ public class XiguaParser extends SearchEngine {
 			String pic = picture.attr("src");
 			String name = picture.attr("alt");
 			bean.setName(name);
-			///海报
-			bean.setPoster(pic);
+			
+			////处理海报
+			if(pic!=null && pic.trim().length()>0){
+				/////海报，将海报下载下来
+				String downloadPoster = null;
+				///海报
+				
+				if(pic.startsWith("http://")){
+					downloadPoster = PictureDownLoad.downLoadPic(pic);
+				}else{
+					downloadPoster = PictureDownLoad.downLoadPic(url+pic);
+				}
+				
+				if(null != downloadPoster)
+					bean.setPoster(pic);
+			}
+			////处理其他
 			Element statElement = pictureElement.nextElementSibling().nextElementSibling();
 			while(statElement!= null){
 				String stateText = statElement.text();

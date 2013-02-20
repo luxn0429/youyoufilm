@@ -5,9 +5,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+
+import com.baobao.utils.DateParser;
+import com.baobao.utils.*;
 
 public class PictureDownLoad {
-	private static final String PATH = "web/pic/";
+	private static final String PATH = "web/upload/";
 
 	/**
 	 * 下载图片
@@ -19,17 +23,29 @@ public class PictureDownLoad {
 		DataInputStream dis = null;
 		FileOutputStream fos = null;
 		try{
+			
+			File dir = new File(PATH);
+			if(!dir.exists())
+				dir.mkdirs();
+			
+			Date date = new Date();
+			/////图片存储每个月的图片存在一个文件夹中
+			String dirDate = DateParser.getInstance().getYM(date.getTime());
+			/////如果文件夹不存在则新建一个
+			File dirFile = new File(PATH+dirDate);
+			if(!dirFile.exists())
+				dirFile.mkdir();
+			
 			URL url = new URL(imageUrl);
 		    //打开网络输入流
 		    dis = new DataInputStream(url.openStream());
-		    File dir = new File(PATH);
-		    ////i为文件在此文件夹下的编号
-		    int i= dir.listFiles().length+1;
+		   
+		    
 		    String sufix = imageUrl.substring(imageUrl.lastIndexOf(".")+1);
 		    
 		    //建立一个新的文件
-		    String fileName = i+"."+sufix;
-		    fos = new FileOutputStream(new File(PATH+fileName));
+		    String fileName = MD5.StringToMd5String(imageUrl)+"."+sufix;
+		    fos = new FileOutputStream(new File(PATH+"/"+dirDate+"/"+fileName));
 		    byte[] buffer = new byte[1024];
 		    int length;
 		    //开始填充数据
@@ -54,6 +70,7 @@ public class PictureDownLoad {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		String imageUrl = "http://ww3.sinaimg.cn/thumbnail/6374753ajw1e1zj0yamxgj.jpg";
+		PictureDownLoad.downLoadPic(imageUrl);
 	}
 }

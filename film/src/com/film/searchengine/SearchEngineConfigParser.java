@@ -72,8 +72,8 @@ public class SearchEngineConfigParser extends BaseFile {
 				Element parserNode = web.element("parser");
 				String url = urlNode.getText();
 				String classPath = parserNode.getText();
-				Class newoneClass = Class.forName(classPath);
-				Class[] args = new Class[1];
+				Class<?> newoneClass = Class.forName(classPath);
+				Class<?>[] args = new Class[1];
 				args[0] = String.class;
 				
 				Constructor cons = newoneClass.getConstructor(args);

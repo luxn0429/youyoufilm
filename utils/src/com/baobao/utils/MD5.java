@@ -1,6 +1,8 @@
 package com.baobao.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
 	
@@ -27,6 +29,29 @@ public class MD5 {
 			return null;
 		}
 	}
+	
+	
+	public static String StringToMd5String (String origin) {
+
+        byte [] bytesOrigin;
+        byte [] bytesDigest;
+
+        try {
+            bytesOrigin = origin.getBytes ("UTF-8");
+
+            MessageDigest md = MessageDigest.getInstance ("MD5");
+            bytesDigest = md.digest (bytesOrigin);
+        }
+        catch (UnsupportedEncodingException e) {
+            throw new RuntimeException ("UTF-8 not supported by the system");
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException ("MD5 not supported by the system");
+        }
+
+        return ByteUtil.bytesToMD5String (bytesDigest);
+    }
+
 	public static void main(String[] args){
 		System.out.println(MD5.getSignature(System.currentTimeMillis()+"luanru&1252048636749","123123123"));
 		System.out.println(MD5.getSignature("luanru&1252048636749","123123123").equals(MD5.getSignature("luanru&1252048636749","123123123")));
