@@ -16,6 +16,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.baobao.utils.MD5;
 import com.film.dao.bean.VideoBean;
 import com.film.dao.bean.VolumeBean;
 import com.film.dao.factory.DaoFactory;
@@ -370,6 +371,7 @@ public class XiguaParser extends SearchEngine {
 					bean.setPlayer(playerPlat);
 					bean.setUrl(temp[1]);
 					bean.setVolume(temp[0]);
+					bean.setMd5(MD5.StringToMd5String(bean.getUrl()));
 					list.add(bean);
 				}
 			}

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+用于搜索的网站配置
+-->
+<webs>
+	<web>
+		<url>http://www.xigua110.com/</url>
+		<parser>com.film.searchengine.XiguaParser</parser>
+	</web>
+</webs>

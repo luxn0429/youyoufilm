@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	MySQL数据库连接池管理配置文件 
+	查找数据源的过程：id+type>>>>>dataSource(DB)>>>>>group>>>>>host
+	其中Group分为系统组（system，id=1）和散列祖（hash）
+	Host分为master(id=0)和slave(id!=0，且slave id从1开始依次增长，如1，2，3...)
+	DataSource分为基本数据源和分布式数据源
+	每个数据源的属性分为公共属性和个体属性
+	同一个组内每个master、slave上的各个database的dbname和password相同，不同组之间的不能重复
+	to confirm: 公共库是否只一个?目前暂定为一个，库名定为public
+-->
+<ConnectionPools>
+
+	<!-- 系统公共DB -->
+	<Group id="1" type="system">
+		<!-- 主库 -->
+		<Host ip="localhost" port="3306" id="0"></Host>
+		<!-- 从库 -->
+		<Host ip="localhost" port="3306" id="1"></Host>
+		<DataSource dbname="film" username="root" password="root"></DataSource>
+	</Group>
+	
+	<!-- 散列DB -->
+	<Group id="2" type="hash">
+		<!-- 主库 -->
+		<Host ip="localhost" port="3306" id="0"></Host>
+		<!-- 从库-->
+		<Host ip="localhost" port="3306" id="1"></Host>
+		<DataSource dbname="film" username="root" password="root"></DataSource>
+	</Group>
+	
+	<!-- DBCP公共属性 -->
+	<commonProperties>
+		<!-- 基本数据源的公共属性配置 -->
+		<basicPoolProperties>
+			<driverClassName>com.mysql.jdbc.Driver</driverClassName>
+			<username>root</username>
+			<password></password>
+			<connectionProperties>autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</connectionProperties>
+			<description></description>
+			<defaultAutoCommit></defaultAutoCommit>
+			<defaultReadOnly></defaultReadOnly>
+			<defaultTransactionIsolation></defaultTransactionIsolation>
+			<maxActive>50</maxActive>
+		  <maxIdle>10</maxIdle>
+			<maxWait>10000</maxWait>
+			<testOnBorrow></testOnBorrow>
+			<testOnReturn></testOnReturn>
+			<timeBetweenEvictionRunsMillis>4000</timeBetweenEvictionRunsMillis>
+			<numTestsPerEvictionRun></numTestsPerEvictionRun>
+			<minEvictableIdleTimeMillis>60000</minEvictableIdleTimeMillis>
+			<testWhileIdle>true</testWhileIdle>
+			<validationQuery>select 1</validationQuery>
+			<poolPreparedStatements></poolPreparedStatements>
+			<maxOpenPreparedStatements></maxOpenPreparedStatements>
+			
+			<initialSize>20</initialSize>
+			<minIdle></minIdle>
+			<accessToUnderlyingConnectionAllowed></accessToUnderlyingConnectionAllowed>
+			<removeAbandoned>true</removeAbandoned>
+			<removeAbandonedTimeout>180</removeAbandonedTimeout>
+			<logAbandoned>true</logAbandoned>
+			<defaultCatalog></defaultCatalog>
+			
+			<loginTimeout></loginTimeout>
+			<rollbackAfterValidation></rollbackAfterValidation>
+		</basicPoolProperties>
+		
+		<!-- 分布式数据源的公共属性配置 -->
+		<xaPoolProperties>
+			<driverClassName>com.mysql.jdbc.Driver</driverClassName>
+			<username>root</username>
+			<password></password>
+			<connectionProperties>autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</connectionProperties>
+			<description></description>
+			<sleepTime></sleepTime>
+			<lifeTime></lifeTime>
+			<loginTimeout></loginTimeout>
+			<deacLockMaxWait></deacLockMaxWait>
+			<deacLockRetryWait></deacLockRetryWait>
+			<maxSize></maxSize>
+			<minSize></minSize>
+			<jdbcTestStmt></jdbcTestStmt>
+			<transactionIsolation></transactionIsolation>
+			<preparedStmtCacheSize></preparedStmtCacheSize>
+			<gc></gc>
+			<debug></debug>
+			<verbose></verbose>
+		</xaPoolProperties>
+	</commonProperties>
+</ConnectionPools>
