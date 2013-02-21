@@ -40,14 +40,16 @@ public class XiguaParser extends SearchEngine {
 	 * @see com.film.searchengine.SearchEngine#parseHome()
 	 */
 	@Override
-	protected void parseHome() {
+	protected void searchWebSite() {
 		String html = SearchWebPageUtil.getUrlContent(this.url,encode);
 		Document doc = Jsoup.parse(html);
 		
 		Elements nav = doc.getElementsByAttributeValue("class","navtop");
 		Element navNode = nav.first();
-		if(null == navNode)
+		if(null == navNode){
+			Logger.getLogger(this.getClass()).error("type is error modify quickly!");
 			return;
+		}
 		Elements links = navNode.getElementsByTag("a");
 		for(int i=0;i<links.size();i++){
 			Element link = links.get(i);
@@ -372,6 +374,9 @@ public class XiguaParser extends SearchEngine {
 					bean.setUrl(temp[1]);
 					bean.setVolume(temp[0]);
 					bean.setMd5(MD5.StringToMd5String(bean.getUrl()));
+					////如果视频存在则不更新
+					if(DaoFactory.getInstance().getVolumeDAO().exist(video, bean.getMd5()))
+						continue;
 					list.add(bean);
 				}
 			}

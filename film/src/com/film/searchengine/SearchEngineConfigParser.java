@@ -106,7 +106,7 @@ public class SearchEngineConfigParser extends BaseFile {
 		System.out.println(url.size());
 		for(Map.Entry<String,SearchEngine> entry:url.entrySet()){
 			SearchEngine engine = entry.getValue();
-			engine.parseHome();
+			engine.searchWebSite();
 		}
 	}
 }

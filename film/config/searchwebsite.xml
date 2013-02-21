@@ -4,7 +4,7 @@
 -->
 <webs>
 	<web>
-		<url>http://www.xigua110.com/</url>
+		<url>http://www.xigua110.com</url>
 		<parser>com.film.searchengine.XiguaParser</parser>
 	</web>
 </webs>

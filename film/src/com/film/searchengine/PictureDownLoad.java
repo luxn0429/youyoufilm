@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 
-import com.baobao.utils.DateParser;
+import org.apache.log4j.Logger;
+
 import com.baobao.utils.*;
 
 public class PictureDownLoad {
@@ -52,6 +53,7 @@ public class PictureDownLoad {
 		    while( (length = dis.read(buffer))>0){
 		    	fos.write(buffer,0,length);
 		    }
+		    Logger.getLogger("download picture success:"+dirDate+"/"+fileName);
 		    return fileName;
 		}catch(Exception e){
 			e.printStackTrace();

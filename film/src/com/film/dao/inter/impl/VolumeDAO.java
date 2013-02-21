@@ -34,15 +34,16 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "insert into " + TABLE_NAME + "(url,belongto,volume,player,description) " +
-					"values(?,?,?,?,?)";
+			String insert = "insert into " + TABLE_NAME + "(url,belongto,volume,player,description,md5) " +
+					"values(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(insert);
 			int i=1;
 			pstmt.setString(i++,bean.getUrl());
 			pstmt.setLong(i++,bean.getBelongto());
 			pstmt.setString(i++,bean.getVolume());
 			pstmt.setInt(i++,bean.getPlayer());
-			pstmt.setString(i,bean.getDescription());
+			pstmt.setString(i++,bean.getDescription());
+			pstmt.setString(i,bean.getMd5());
 			return pstmt.executeUpdate() != 0;
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -61,8 +62,8 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "insert into " + TABLE_NAME + "(url,belongto,volume,player,description) " +
-					"values(?,?,?,?,?)";
+			String insert = "insert into " + TABLE_NAME + "(url,belongto,volume,player,description,md5) " +
+					"values(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(insert);
 			for(Map.Entry<Integer,List<VolumeBean>> entry:beans.entrySet()){
 				for(VolumeBean bean:entry.getValue()){
@@ -71,7 +72,8 @@ public class VolumeDAO implements IVolumeDAO {
 					pstmt.setLong(i++,bean.getBelongto());
 					pstmt.setString(i++,bean.getVolume());
 					pstmt.setInt(i++,bean.getPlayer());
-					pstmt.setString(i,bean.getDescription());
+					pstmt.setString(i++,bean.getDescription());
+					pstmt.setString(i,bean.getMd5() );
 					pstmt.addBatch();
 				}
 			}
@@ -127,6 +129,7 @@ public class VolumeDAO implements IVolumeDAO {
 		bean.setVolume(rs.getString("volume"));
 		bean.setPlayer(rs.getInt("player"));
 		bean.setDescription(rs.getString("description"));
+		bean.setMd5(rs.getString("md5"));
 		return bean;
 	}
 
@@ -200,6 +203,32 @@ public class VolumeDAO implements IVolumeDAO {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public boolean exist(long belongTo, String md5) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			stmt = conn.prepareStatement("SELECT * FROME "+TABLE_NAME +" WHERE belongto=? AND md5=?");
+			stmt.setLong(1,belongTo);
+			stmt.setString(2, md5);
+			rs = stmt.executeQuery();
+			if (!rs.first())
+				return false;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
 	}
 
 }

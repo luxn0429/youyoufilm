@@ -16,5 +16,5 @@ public abstract class SearchEngine {
 		this.url = url;
 	}
 	
-	protected abstract void parseHome();
+	protected abstract void searchWebSite();
 }

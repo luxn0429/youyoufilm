@@ -1,0 +1,176 @@
+2013-02-21 10:02:39,139 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/	result:success	time:825
+ 2013-02-21 10:02:39,660 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//occident/	result:success	time:181
+ 2013-02-21 10:02:39,662 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//occident/
+ 2013-02-21 10:02:39,801 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//japan/	result:success	time:319
+ 2013-02-21 10:02:39,801 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//japan/
+ 2013-02-21 10:02:39,810 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//korea/	result:success	time:331
+ 2013-02-21 10:02:39,810 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//korea/
+ 2013-02-21 10:02:39,817 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//tvb/	result:success	time:337
+ 2013-02-21 10:02:39,817 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//tvb/
+ 2013-02-21 10:02:39,820 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//idol/	result:success	time:339
+ 2013-02-21 10:02:39,821 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//idol/
+ 2013-02-21 10:02:39,825 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//singapore/	result:success	time:340
+ 2013-02-21 10:02:39,825 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//singapore/
+ 2013-02-21 10:02:39,833 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//cartoon/	result:success	time:345
+ 2013-02-21 10:02:39,833 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//cartoon/
+ 2013-02-21 10:02:39,838 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//inland/	result:success	time:351
+ 2013-02-21 10:02:39,838 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//inland/
+ 2013-02-21 10:02:39,983 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//fun	result:success	time:482
+ 2013-02-21 10:02:39,983 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//fun
+ 2013-02-21 10:02:40,100 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//comed/	result:success	time:600
+ 2013-02-21 10:02:40,101 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//comed/
+ 2013-02-21 10:02:40,179 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:491
+ 2013-02-21 10:02:40,385 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:569
+ 2013-02-21 10:02:40,404 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:584
+ 2013-02-21 10:02:40,413 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:591
+ 2013-02-21 10:02:40,427 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:591
+ 2013-02-21 10:02:40,429 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:591
+ 2013-02-21 10:02:40,438 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:599
+ 2013-02-21 10:02:40,462 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:357
+ 2013-02-21 10:02:40,590 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:596
+ 2013-02-21 10:02:40,709 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:865
+ 2013-02-21 10:02:42,295 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//romance/	result:success	time:2795
+ 2013-02-21 10:02:42,295 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//romance/
+ 2013-02-21 10:02:42,307 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//superstar/	result:success	time:2806
+ 2013-02-21 10:02:42,308 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//superstar/
+ 2013-02-21 10:02:42,311 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//fiction/	result:success	time:2813
+ 2013-02-21 10:02:42,312 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//fiction/
+ 2013-02-21 10:02:42,330 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//drama/	result:success	time:2830
+ 2013-02-21 10:02:42,330 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//horror/	result:success	time:2832
+ 2013-02-21 10:02:42,330 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//drama/
+ 2013-02-21 10:02:42,331 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//horror/
+ 2013-02-21 10:02:42,438 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//war/	result:success	time:2938
+ 2013-02-21 10:02:42,439 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//war/
+ 2013-02-21 10:02:42,509 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:192
+ 2013-02-21 10:02:42,624 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:304
+ 2013-02-21 10:02:42,624 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:301
+ 2013-02-21 10:02:42,625 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//action/	result:success	time:3128
+ 2013-02-21 10:02:42,625 INFO [com.film.searchengine.XiguaParser$GetVideos:129] - get page:http://www.xigua110.com//action/
+ 2013-02-21 10:02:42,636 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:301
+ 2013-02-21 10:02:42,672 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:331
+ 2013-02-21 10:02:42,827 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:189
+ 2013-02-21 10:02:42,849 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:396
+ 2013-02-21 11:52:24,458 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/	result:success	time:1018
+ 2013-02-21 11:52:25,382 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//korea/	result:success	time:485
+ 2013-02-21 11:52:25,382 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//korea/
+ 2013-02-21 11:52:25,450 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//cartoon/	result:success	time:546
+ 2013-02-21 11:52:25,451 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//cartoon/
+ 2013-02-21 11:52:25,683 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//occident/	result:success	time:786
+ 2013-02-21 11:52:25,687 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//occident/
+ 2013-02-21 11:52:25,803 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:404
+ 2013-02-21 11:52:26,278 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:820
+ 2013-02-21 11:52:26,373 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:679
+ 2013-02-21 11:52:26,655 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//tvb/	result:success	time:1758
+ 2013-02-21 11:52:26,655 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//tvb/
+ 2013-02-21 11:52:26,881 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//japan/	result:success	time:1984
+ 2013-02-21 11:52:26,881 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//japan/
+ 2013-02-21 11:52:27,085 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:425
+ 2013-02-21 11:52:27,251 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:364
+ 2013-02-21 11:52:27,412 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//singapore/	result:success	time:2514
+ 2013-02-21 11:52:27,413 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//singapore/
+ 2013-02-21 11:52:28,066 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//fun	result:success	time:3157
+ 2013-02-21 11:52:28,066 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//fun
+ 2013-02-21 11:52:28,486 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:1069
+ 2013-02-21 11:52:28,581 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//superstar/	result:success	time:3673
+ 2013-02-21 11:52:28,581 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//superstar/
+ 2013-02-21 11:52:28,602 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//horror/	result:success	time:3696
+ 2013-02-21 11:52:28,602 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//horror/
+ 2013-02-21 11:52:28,636 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//comed/	result:success	time:3728
+ 2013-02-21 11:52:28,637 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//comed/
+ 2013-02-21 11:52:28,662 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//fiction/	result:success	time:3755
+ 2013-02-21 11:52:28,663 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//fiction/
+ 2013-02-21 11:52:28,757 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//war/	result:success	time:3849
+ 2013-02-21 11:52:28,758 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//war/
+ 2013-02-21 11:52:28,765 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//romance/	result:success	time:3858
+ 2013-02-21 11:52:28,766 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//romance/
+ 2013-02-21 11:52:28,877 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//idol/	result:success	time:3979
+ 2013-02-21 11:52:28,877 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//idol/
+ 2013-02-21 11:52:28,899 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//action/	result:success	time:3993
+ 2013-02-21 11:52:28,900 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//action/
+ 2013-02-21 11:52:29,176 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:509
+ 2013-02-21 11:52:29,374 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:734
+ 2013-02-21 11:52:29,571 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:801
+ 2013-02-21 11:52:29,621 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:711
+ 2013-02-21 11:52:29,665 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:1595
+ 2013-02-21 11:52:29,731 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:850
+ 2013-02-21 11:52:29,745 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:1159
+ 2013-02-21 11:52:30,685 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//drama/	result:success	time:5777
+ 2013-02-21 11:52:30,685 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//drama/
+ 2013-02-21 11:52:30,881 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//inland/	result:success	time:5982
+ 2013-02-21 11:52:30,881 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com//inland/
+ 2013-02-21 11:52:30,970 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:2200
+ 2013-02-21 11:52:31,063 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:374
+ 2013-02-21 11:52:31,220 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:334
+ 2013-02-21 11:52:31,474 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com//indexlist.html	result:success	time:2868
+ 2013-02-21 11:53:40,345 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com	result:success	time:572
+ 2013-02-21 11:53:41,012 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/tvb/	result:success	time:462
+ 2013-02-21 11:53:41,013 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/tvb/
+ 2013-02-21 11:53:41,027 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/korea/	result:success	time:478
+ 2013-02-21 11:53:41,028 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/korea/
+ 2013-02-21 11:53:41,433 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/comed/	result:success	time:877
+ 2013-02-21 11:53:41,434 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/comed/
+ 2013-02-21 11:53:41,528 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/fiction/	result:success	time:973
+ 2013-02-21 11:53:41,528 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/fiction/
+ 2013-02-21 11:53:41,531 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/horror/	result:success	time:976
+ 2013-02-21 11:53:41,531 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/horror/
+ 2013-02-21 11:53:41,573 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/fun	result:success	time:1016
+ 2013-02-21 11:53:41,573 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/fun
+ 2013-02-21 11:53:41,645 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:619
+ 2013-02-21 11:53:42,037 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:591
+ 2013-02-21 11:53:42,214 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/idol/	result:success	time:1664
+ 2013-02-21 11:53:42,214 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/idol/
+ 2013-02-21 11:53:42,257 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:1222
+ 2013-02-21 11:53:42,277 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/inland/	result:success	time:1724
+ 2013-02-21 11:53:42,277 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/inland/
+ 2013-02-21 11:53:42,324 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:790
+ 2013-02-21 11:53:42,408 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:190
+ 2013-02-21 11:53:42,467 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:186
+ 2013-02-21 11:53:42,651 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/romance/	result:success	time:2095
+ 2013-02-21 11:53:42,652 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/romance/
+ 2013-02-21 11:53:42,686 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/drama/	result:success	time:2130
+ 2013-02-21 11:53:42,686 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/drama/
+ 2013-02-21 11:53:42,715 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/cartoon/	result:success	time:2162
+ 2013-02-21 11:53:42,716 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/cartoon/
+ 2013-02-21 11:53:42,896 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:240
+ 2013-02-21 11:53:42,899 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/war/	result:success	time:2343
+ 2013-02-21 11:53:42,899 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/war/
+ 2013-02-21 11:53:42,928 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:238
+ 2013-02-21 11:53:42,981 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:262
+ 2013-02-21 11:53:43,170 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:265
+ 2013-02-21 11:53:43,191 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:1646
+ 2013-02-21 11:53:43,798 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:2221
+ 2013-02-21 11:53:44,038 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/occident/	result:success	time:3488
+ 2013-02-21 11:53:44,039 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/occident/
+ 2013-02-21 11:53:44,162 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/japan/	result:success	time:3611
+ 2013-02-21 11:53:44,162 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/japan/
+ 2013-02-21 11:53:44,163 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/singapore/	result:success	time:3611
+ 2013-02-21 11:53:44,163 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/singapore/
+ 2013-02-21 11:53:44,175 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/action/	result:success	time:3620
+ 2013-02-21 11:53:44,175 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/action/
+ 2013-02-21 11:53:44,229 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/superstar/	result:success	time:3672
+ 2013-02-21 11:53:44,230 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/superstar/
+ 2013-02-21 11:53:44,418 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:376
+ 2013-02-21 11:53:44,545 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:375
+ 2013-02-21 11:53:44,548 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:377
+ 2013-02-21 11:53:44,558 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:379
+ 2013-02-21 11:53:44,688 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/indexlist.html	result:success	time:455
+ 2013-02-21 11:57:58,313 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com	result:success	time:554
+ 2013-02-21 11:57:58,784 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/korea/	result:success	time:206
+ 2013-02-21 11:57:59,029 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/tvb/	result:success	time:451
+ 2013-02-21 11:57:59,038 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/singapore/	result:success	time:458
+ 2013-02-21 11:57:59,051 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/action/	result:success	time:464
+ 2013-02-21 11:57:59,167 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/occident/	result:success	time:586
+ 2013-02-21 11:57:59,214 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/fun	result:success	time:617
+ 2013-02-21 11:57:59,306 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/superstar/	result:success	time:714
+ 2013-02-21 11:57:59,361 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/cartoon/	result:success	time:766
+ 2013-02-21 11:57:59,383 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/comed/	result:success	time:786
+ 2013-02-21 11:58:00,258 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/japan/	result:success	time:1679
+ 2013-02-21 11:58:00,895 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/war/	result:success	time:2306
+ 2013-02-21 11:58:00,901 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/romance/	result:success	time:2312
+ 2013-02-21 11:58:01,608 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/idol/	result:success	time:3015
+ 2013-02-21 11:58:01,730 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/drama/	result:success	time:3133
+ 2013-02-21 11:58:01,828 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/fiction/	result:success	time:3232
+ 2013-02-21 11:58:01,907 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/horror/	result:success	time:3319
+ 2013-02-21 11:58:04,209 INFO [com.film.searchengine.SearchWebPageUtil:60] - LogNoticeForKmsocialOperation	searchGetURLContent	url:http://www.xigua110.com/inland/	result:success	time:5616
+ 2013-02-21 11:58:05,283 INFO [com.film.searchengine.XiguaParser$GetVideos:131] - get page:http://www.xigua110.com/war/
+ 

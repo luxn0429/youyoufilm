@@ -35,4 +35,11 @@ public interface IVolumeDAO {
 	 * @param id		集ID
 	 */
 	boolean deleteVolume(long id);
+	/**
+	 * 
+	 * @param belongTo
+	 * @param md5
+	 * @return
+	 */
+	boolean exist(long belongTo,String md5);
 }
