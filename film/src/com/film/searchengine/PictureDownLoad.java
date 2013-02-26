@@ -54,7 +54,7 @@ public class PictureDownLoad {
 		    	fos.write(buffer,0,length);
 		    }
 		    Logger.getLogger("download picture success:"+dirDate+"/"+fileName);
-		    return fileName;
+		    return dirDate+"/"+fileName;
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

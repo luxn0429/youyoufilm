@@ -212,7 +212,7 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			stmt = conn.prepareStatement("SELECT * FROME "+TABLE_NAME +" WHERE belongto=? AND md5=?");
+			stmt = conn.prepareStatement("SELECT * FROM "+TABLE_NAME +" WHERE belongto=? AND md5=?");
 			stmt.setLong(1,belongTo);
 			stmt.setString(2, md5);
 			rs = stmt.executeQuery();

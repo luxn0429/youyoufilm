@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 import com.baobao.utils.MD5;
@@ -68,8 +69,6 @@ public class XiguaParser extends SearchEngine {
 			}else if(href.contains("inland")){
 				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.CHINA,null,href));
 			}else if(href.contains("singapore")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
-			}else if(href.contains("korea")){
 				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
 			}else if(href.contains("korea")){
 				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
@@ -132,7 +131,14 @@ public class XiguaParser extends SearchEngine {
 			Document doc = Jsoup.parse(html);
 			Element videoDoc = doc.getElementsByAttributeValue("class", "vodlist_l box").first();
 			if(null != videoDoc){
-				Elements videoList = videoDoc.getElementsByTag("li");
+				Elements elements = videoDoc.getElementsByTag("ul");
+				Element videoULElement = null;
+				if(elements.size()>1){
+					videoULElement = elements.get(1);
+				}else
+					videoULElement = elements.first();
+					
+				Elements videoList = videoULElement.getElementsByTag("li");
 				for(Element video:videoList){
 					Element descriptionUrl = video.getElementsByTag("a").first();
 					String desPath = descriptionUrl.attr("href");
@@ -211,7 +217,7 @@ public class XiguaParser extends SearchEngine {
 				}
 				
 				if(null != downloadPoster)
-					bean.setPoster(pic);
+					bean.setPoster(downloadPoster);
 			}
 			////处理其他
 			Element statElement = pictureElement.nextElementSibling().nextElementSibling();
