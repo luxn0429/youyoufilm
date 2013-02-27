@@ -26,7 +26,7 @@ public class GetVideoVolumServlet extends BaseServlet {
 	@Override
 	protected String dealRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String 
+		String videoId = request.getParameter("videoId");
 		
 		return null;
 	}
