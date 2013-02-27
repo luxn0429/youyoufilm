@@ -86,10 +86,12 @@ public class VideoDao implements IVideoDAO {
 	public List<VideoBean> getVideoByType(VideoFilter filter) {
 		StringBuffer select = new StringBuffer("select * from ");
 		select.append(TABLE_NAME);
-		select.append(" where ");
+		
 		
 		if(filter.getLanguate() != -1 || filter.getCountry()!= -1 || 
 				filter.getType() != -1 || filter.getStartPubDate() != -1){
+			select.append(" where ");
+			
 			boolean isFirst = true;
 			if(filter.getLanguate() != -1){
 				select.append(" language=").append(filter.getLanguate());
@@ -125,7 +127,7 @@ public class VideoDao implements IVideoDAO {
 			}
 		}
 		
-		select.append(" limit").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
+		select.append(" limit ").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -143,6 +145,7 @@ public class VideoDao implements IVideoDAO {
 			}
 			return result;
 		}catch(SQLException e){
+			System.out.println(select.toString());
 			e.printStackTrace();
 		}finally{
 			try {
