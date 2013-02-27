@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,19 +21,16 @@ import com.film.dao.factory.DaoFactory;
  * @author luxianginng
  *
  */
-public class SearchVideoServlet extends HttpServlet {
+public class SearchVideoServlet extends BaseServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8243323153723976949L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-       this.doPost(request, response);
-    }
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	@Override
+	protected String dealRequest(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		////国家
 		String country = request.getParameter("country");
 		////类型
@@ -74,12 +70,20 @@ public class SearchVideoServlet extends HttpServlet {
 		
 		JSON json = JSONSerializer.toJSON(videoList);
 		
-		response.setCharacterEncoding (charset);
-		response.setContentType("text/html");
-		ObjectFormater formater = FormaterFactory.getFormater(format,ais);
-		PrintWriter writer = response.getWriter();
-		writer.write(formater.format(output));
-		writer.flush();
-		writer.close();
+		return json.toString();
 	}
+	
+	public static void main(String[] args){
+		
+		VideoFilter filter = new VideoFilter();
+		filter.setStartLine(0);
+		filter.setPageNumber(20);
+		
+		List<VideoBean> videoList = DaoFactory.getInstance().getVideoDAO().getVideoByType(filter);
+		
+		JSON json = JSONSerializer.toJSON(videoList);
+		
+		System.out.println(json.toString());
+	}
+	
 }
