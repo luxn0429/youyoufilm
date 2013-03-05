@@ -10,23 +10,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
-import com.film.dao.bean.VideoBean;
 import com.film.dao.bean.VolumeBean;
 import com.film.dao.factory.DaoFactory;
 
 /**
- * @author luxianginng
+ * @author xiangning
  *
  */
-public class GetVideoVolumServlet extends BaseServlet {
+public class GetVolumServlet extends BaseServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2252004146601478218L;
+	private static final long serialVersionUID = 1L;
 
 	/* (non-Javadoc)
 	 * @see com.film.servlet.BaseServlet#dealRequest(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -34,17 +34,15 @@ public class GetVideoVolumServlet extends BaseServlet {
 	@Override
 	protected String dealRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String videoId = request.getParameter("videoId");
-		VideoBean bean = DaoFactory.getInstance().getVideoDAO().getVideoBean(Long.valueOf(videoId));
+		String videoID = request.getParameter("videoID");
+		List<VolumeBean> volumes = DaoFactory.getInstance().getVolumeDAO().getVolumesByVideoID(Long.valueOf(videoID));
 		JSONObject result = new JSONObject();
-		if(null == bean){
+		if(null == volumes){
 			result.put("error", -1);
 		}else{
 			result.put("error", 0);
-			result.put("ret", JSONSerializer.toJSON(bean).toString());
-			
-			List<VolumeBean> volumes = DaoFactory.getInstance().getVolumeDAO().getVolumesByVideoID(Long.valueOf(videoId));
-			result.put("volumes", JSONSerializer.toJSON(volumes).toString());
+			JSON json = JSONSerializer.toJSON(volumes);
+			result.put("ret", json.toString());
 		}
 		
 		return result.toString();
@@ -54,5 +52,8 @@ public class GetVideoVolumServlet extends BaseServlet {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
+
 }

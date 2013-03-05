@@ -137,7 +137,7 @@ public class VolumeDAO implements IVolumeDAO {
 	 * @see com.film.db.inter.VolumeInterface#getVolume(java.util.List)
 	 */
 	@Override
-	public List<VolumeBean> getVolume(List<Long> ids) {
+	public List<VolumeBean> getVolumes(List<Long> ids) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Connection conn = null;
@@ -229,6 +229,36 @@ public class VolumeDAO implements IVolumeDAO {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public List<VolumeBean> getVolumesByVideoID(long videoID) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			StringBuffer buffer = new StringBuffer("SELECT * FROME "+TABLE_NAME +" WHERE belongto=?");
+			stmt = conn.prepareStatement(buffer.toString());
+			stmt.setLong(1,videoID);
+			
+			rs = stmt.executeQuery();
+			if (!rs.first())
+				return null;
+			List<VolumeBean> list = new ArrayList<VolumeBean>();
+			while(rs.next()){
+				list.add(getBean(rs));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 }

@@ -28,7 +28,13 @@ public interface IVolumeDAO {
 	 * @param ids		集ID
 	 * @return
 	 */
-	List<VolumeBean> getVolume(List<Long> ids);
+	List<VolumeBean> getVolumes(List<Long> ids);
+	/**
+	 * 通过影片ID得到剧集
+	 * @param videoID	影片ID
+	 * @return
+	 */
+	List<VolumeBean> getVolumesByVideoID(long videoID);
 	
 	/**
 	 * 删除一集

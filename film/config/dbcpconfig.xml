@@ -17,7 +17,7 @@
 		<Host ip="localhost" port="3306" id="0"></Host>
 		<!-- 从库 -->
 		<Host ip="localhost" port="3306" id="1"></Host>
-		<DataSource dbname="film" username="root" password="root"></DataSource>
+		<DataSource dbname="film" username="root" password="luxn0429film"></DataSource>
 	</Group>
 	
 	<!-- 散列DB -->
@@ -26,7 +26,7 @@
 		<Host ip="localhost" port="3306" id="0"></Host>
 		<!-- 从库-->
 		<Host ip="localhost" port="3306" id="1"></Host>
-		<DataSource dbname="film" username="root" password="root"></DataSource>
+		<DataSource dbname="film" username="root" password="luxn0429film"></DataSource>
 	</Group>
 	
 	<!-- DBCP公共属性 -->

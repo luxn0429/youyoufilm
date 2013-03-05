@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
 import com.film.dao.bean.VideoBean;
@@ -69,8 +70,14 @@ public class SearchVideoServlet extends BaseServlet {
 		List<VideoBean> videoList = DaoFactory.getInstance().getVideoDAO().getVideoByType(filter);
 		
 		JSON json = JSONSerializer.toJSON(videoList);
-		
-		return json.toString();
+		JSONObject result = new JSONObject();
+		if(null == json){
+			result.put("error", -1);
+		}else{
+			result.put("error", 0);
+			result.put("ret", json.toString());
+		}
+		return result.toString();
 	}
 	
 	public static void main(String[] args){
