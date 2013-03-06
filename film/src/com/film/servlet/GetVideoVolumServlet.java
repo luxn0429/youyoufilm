@@ -34,9 +34,16 @@ public class GetVideoVolumServlet extends BaseServlet {
 	@Override
 	protected String dealRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String videoId = request.getParameter("videoId");
-		VideoBean bean = DaoFactory.getInstance().getVideoDAO().getVideoBean(Long.valueOf(videoId));
 		JSONObject result = new JSONObject();
+		
+		String videoId = request.getParameter("videoid");
+		if(null == videoId){
+			result.put("error", -1);
+			return result.toString();
+		}
+		
+		
+		VideoBean bean = DaoFactory.getInstance().getVideoDAO().getVideoBean(Long.valueOf(videoId));
 		if(null == bean){
 			result.put("error", -1);
 		}else{
@@ -54,5 +61,10 @@ public class GetVideoVolumServlet extends BaseServlet {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		List<VolumeBean> volumes = DaoFactory.getInstance().getVolumeDAO().getVolumesByVideoID(Long.valueOf("1"));
+		for(VolumeBean bean:volumes){
+			System.out.println(bean.getVolume());
+		}
+		System.out.println(volumes);
 	}
 }

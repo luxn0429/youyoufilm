@@ -101,7 +101,7 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			stmt = conn.prepareStatement("SELECT * FROME "+TABLE_NAME +" WHERE id=?");
+			stmt = conn.prepareStatement("SELECT * FROM "+TABLE_NAME +" WHERE id=?");
 			stmt.setLong(1,id);
 			rs = stmt.executeQuery();
 			if (!rs.first())
@@ -143,7 +143,7 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			StringBuffer buffer = new StringBuffer("SELECT * FROME "+TABLE_NAME +" WHERE id IN(");
+			StringBuffer buffer = new StringBuffer("SELECT * FROM "+TABLE_NAME +" WHERE id IN(");
 			
 			for(int i=0;i<ids.size();i++){
 				buffer.append("?,");
@@ -238,17 +238,16 @@ public class VolumeDAO implements IVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			StringBuffer buffer = new StringBuffer("SELECT * FROME "+TABLE_NAME +" WHERE belongto=?");
+			StringBuffer buffer = new StringBuffer("SELECT * FROM "+TABLE_NAME +" WHERE belongto=? ORDER BY ID");
 			stmt = conn.prepareStatement(buffer.toString());
 			stmt.setLong(1,videoID);
 			
 			rs = stmt.executeQuery();
-			if (!rs.first())
-				return null;
 			List<VolumeBean> list = new ArrayList<VolumeBean>();
 			while(rs.next()){
 				list.add(getBean(rs));
 			}
+			return list;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

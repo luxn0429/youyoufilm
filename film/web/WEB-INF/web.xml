@@ -23,6 +23,35 @@
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+    <servlet-name>SearchVideo</servlet-name>
+    <servlet-class>com.film.servlet.SearchVideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchVideo</servlet-name>
+    <url-pattern>/searchvideo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetVideoVolum</servlet-name>
+    <servlet-class>com.film.servlet.GetVideoVolumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVideoVolum</servlet-name>
+    <url-pattern>/getvideovolum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetVolum</servlet-name>
+    <servlet-class>com.film.servlet.GetVolumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVolum</servlet-name>
+    <url-pattern>/getvolum</url-pattern>
+  </servlet-mapping>
+  
+  
   <!-- Uncomment to override the setup of the test filter -->
   <!-- 
   <filter>

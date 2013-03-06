@@ -62,7 +62,7 @@ public class VideoToVolumeDAO implements IVideoToVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			stmt = conn.prepareStatement("SELECT * FROME "+TABLE_NAME +" WHERE videoId=? ORDER BY volumeId");
+			stmt = conn.prepareStatement("SELECT * FROM "+TABLE_NAME +" WHERE videoId=? ORDER BY volumeId");
 			stmt.setLong(1,vid);
 			rs = stmt.executeQuery();
 			if (!rs.first())
@@ -153,7 +153,7 @@ public class VideoToVolumeDAO implements IVideoToVolumeDAO {
 		Connection conn = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
-			stmt = conn.prepareStatement("SELECT volumeId FROME "+TABLE_NAME +" WHERE videoId=? ORDER BY volumeId");
+			stmt = conn.prepareStatement("SELECT volumeId FROM "+TABLE_NAME +" WHERE videoId=? ORDER BY volumeId");
 			stmt.setLong(1,vid);
 			rs = stmt.executeQuery();
 			if (!rs.first())
