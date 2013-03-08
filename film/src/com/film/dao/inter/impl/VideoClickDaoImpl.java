@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.baobao.utils.dbtool.DBCPManager;
@@ -63,7 +64,38 @@ public class VideoClickDaoImpl implements IVideoClickDao {
 	 */
 	@Override
 	public List<Long> getClickOrder(int type,int number) {
-		
+		PreparedStatement  pstmt = null;
+		Connection conn = null;
+		ResultSet newid = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
+			String insert = "select id from  " + TABLE_NAME + "order by ";
+			if(type == 1)
+				insert += "totalClick";
+			else if(type == 2)
+				insert += "monthClick";
+			else insert += "weekClick";
+			
+			insert += " limit ?";
+					
+			pstmt = conn.prepareStatement(insert);
+			
+			pstmt.setInt(1, number);
+			newid = pstmt.executeQuery();
+			List<Long> result = new ArrayList<Long>();
+			while(newid.next()){
+				result.add(newid.getLong(1));
+			}
+			return result;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, pstmt, newid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return null;
 	}
 
