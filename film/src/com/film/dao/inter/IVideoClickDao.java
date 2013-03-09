@@ -20,7 +20,9 @@ public interface IVideoClickDAO {
 	 * @param number	得到的数量
 	 * @return
 	 */
-	List<Long> getClickOrder(int type,int number);
+	List<VideoClickBean> getClickOrder(int type,int number);
 	
 	int updateVideoClick(long videoId,int number);
+	
+	VideoClickBean getClickBean(long videId);
 }

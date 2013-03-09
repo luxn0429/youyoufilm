@@ -114,4 +114,9 @@ public class ConstantUtil {
             return index;
         }
 	}
+	
+	public static final int TOTALCLICK = 1;
+	public static final int MONTHCLICK = 2;
+	public static final int WEEKCLICK  = 3;
+	
 }

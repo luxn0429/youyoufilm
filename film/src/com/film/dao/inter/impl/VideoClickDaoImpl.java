@@ -34,7 +34,7 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 		ResultSet newid = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "insert into " + TABLE_NAME + "(id,totalClick,weekClick,monthClick) " +
+			String insert = "insert into " + TABLE_NAME + " (id,totalClick,weekClick,monthClick) " +
 					"values(?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=?,weekClick=?,monthClick=?";
 			pstmt = conn.prepareStatement(insert);
 			int i=1;
@@ -63,13 +63,13 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 	 * @see com.film.dao.inter.IVideoClickDao#getClickOrder(int)
 	 */
 	@Override
-	public List<Long> getClickOrder(int type,int number) {
+	public List<VideoClickBean> getClickOrder(int type,int number) {
 		PreparedStatement  pstmt = null;
 		Connection conn = null;
 		ResultSet newid = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "select id from  " + TABLE_NAME + "order by ";
+			String insert = "select * from  " + TABLE_NAME + " order by ";
 			if(type == 1)
 				insert += "totalClick";
 			else if(type == 2)
@@ -82,9 +82,14 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 			
 			pstmt.setInt(1, number);
 			newid = pstmt.executeQuery();
-			List<Long> result = new ArrayList<Long>();
+			List<VideoClickBean> result = new ArrayList<VideoClickBean>();
 			while(newid.next()){
-				result.add(newid.getLong(1));
+				VideoClickBean bean = new VideoClickBean();
+				bean.setVideoId(newid.getLong("id"));
+				bean.setTotalClick(newid.getInt("totalClick"));
+				bean.setMonthClick(newid.getInt("monthClick"));
+				bean.setWeekClick(newid.getInt("weekClick"));
+				result.add(bean);
 			}
 			return result;
 		}catch(SQLException e){
@@ -108,7 +113,7 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
 			String insert = "insert into " + TABLE_NAME + "(id,totalClick,weekClick,monthClick) " +
-					"values(?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=totalClick+?,weekClick= weekClick+?,monthClick=monthClick+?";
+					" values(?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=totalClick+?,weekClick= weekClick+?,monthClick=monthClick+?";
 			pstmt = conn.prepareStatement(insert);
 			int i=1;
 			pstmt.setLong(i++,videoId);
@@ -130,6 +135,38 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 			}
 		}
 		return -1;
+	}
+
+	@Override
+	public VideoClickBean getClickBean(long videoId) {
+		PreparedStatement  pstmt = null;
+		Connection conn = null;
+		ResultSet newid = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
+			String insert = "select * from  " + TABLE_NAME + " where id=? ";
+			pstmt = conn.prepareStatement(insert);
+			
+			pstmt.setLong(1, videoId);
+			newid = pstmt.executeQuery();
+			if(newid.first()){
+				VideoClickBean bean = new VideoClickBean();
+				bean.setVideoId(newid.getLong("id"));
+				bean.setTotalClick(newid.getInt("totalClick"));
+				bean.setMonthClick(newid.getInt("monthClick"));
+				bean.setWeekClick(newid.getInt("weekClick"));
+				return bean;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, pstmt, newid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 }

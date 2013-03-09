@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 
-import com.film.dao.factory.DaoFactory;
+import com.film.cache.ClickCache;
 
 /**
  * @author xiangning
@@ -33,7 +33,7 @@ public class ClickVideoServlet extends BaseServlet{
 			result.put("error",-1);
 			return result.toString();
 		}
-		DaoFactory.getInstance().getVideoClickDAO().updateVideoClick(Long.valueOf(videoId), 1);
+		ClickCache.getInstance().click(Long.valueOf(videoId));
 		result.put("error",0);
 		return result.toString();
 	}
