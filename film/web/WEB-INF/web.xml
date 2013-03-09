@@ -23,7 +23,6 @@
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
   
-  
   <servlet>
     <servlet-name>SearchVideo</servlet-name>
     <servlet-class>com.film.servlet.SearchVideoServlet</servlet-class>
@@ -49,6 +48,24 @@
   <servlet-mapping>
     <servlet-name>GetVolum</servlet-name>
     <url-pattern>/getvolum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ClickVideo</servlet-name>
+    <servlet-class>com.film.servlet.ClickVideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClickVideo</servlet-name>
+    <url-pattern>/clickvideo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetClickOrder</servlet-name>
+    <servlet-class>com.film.servlet.GetOrderListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetClickOrder</servlet-name>
+    <url-pattern>/getclickorder</url-pattern>
   </servlet-mapping>
   
   
