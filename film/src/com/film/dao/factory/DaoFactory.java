@@ -3,8 +3,10 @@
  */
 package com.film.dao.factory;
 
+import com.film.dao.inter.IVideoClickDAO;
 import com.film.dao.inter.IVideoDAO;
 import com.film.dao.inter.IVolumeDAO;
+import com.film.dao.inter.impl.VideoClickDaoImpl;
 import com.film.dao.inter.impl.VideoDao;
 import com.film.dao.inter.impl.VolumeDAO;
 
@@ -17,6 +19,8 @@ public class DaoFactory {
 	
 	private IVolumeDAO volumeDAO = new VolumeDAO();
 	
+	private IVideoClickDAO videoClick = new VideoClickDaoImpl();
+	
 	private DaoFactory(){
 		
 	}
@@ -26,4 +30,5 @@ public class DaoFactory {
 	
 	public IVideoDAO getVideoDAO(){return videoDAO;}
 	public IVolumeDAO getVolumeDAO(){return volumeDAO;}
+	public IVideoClickDAO getVideoClickDAO(){return videoClick;}
 }

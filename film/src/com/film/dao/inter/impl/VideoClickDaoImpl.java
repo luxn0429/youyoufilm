@@ -14,13 +14,13 @@ import com.baobao.utils.dbtool.DBCPManager;
 import com.baobao.utils.dbtool.DBConstants;
 import com.baobao.utils.dbtool.DBNameManager;
 import com.film.dao.bean.VideoClickBean;
-import com.film.dao.inter.IVideoClickDao;
+import com.film.dao.inter.IVideoClickDAO;
 
 /**
  * @author xiangning
  *
  */
-public class VideoClickDaoImpl implements IVideoClickDao {
+public class VideoClickDaoImpl implements IVideoClickDAO {
 	private static final String TABLE_NAME = "videoclick";
 	
 	private DBCPManager dbcpManager = DBCPManager.getInstance();
@@ -97,6 +97,39 @@ public class VideoClickDaoImpl implements IVideoClickDao {
 			}
 		}
 		return null;
+	}
+	
+	
+	
+	public int updateVideoClick(long videoId,int number){
+		PreparedStatement  pstmt = null;
+		Connection conn = null;
+		ResultSet newid = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
+			String insert = "insert into " + TABLE_NAME + "(id,totalClick,weekClick,monthClick) " +
+					"values(?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=totalClick+?,weekClick= weekClick+?,monthClick=monthClick+?";
+			pstmt = conn.prepareStatement(insert);
+			int i=1;
+			pstmt.setLong(i++,videoId);
+			pstmt.setInt(i++,number);
+			pstmt.setInt(i++,number);
+			pstmt.setInt(i++,number);
+			pstmt.setInt(i++,number);
+			pstmt.setInt(i++,number);
+			pstmt.setInt(i++,number);
+			
+			return pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, pstmt, newid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
 	}
 
 }

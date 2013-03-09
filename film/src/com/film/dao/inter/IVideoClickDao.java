@@ -11,7 +11,7 @@ import com.film.dao.bean.VideoClickBean;
  * @author xiangning
  *
  */
-public interface IVideoClickDao {
+public interface IVideoClickDAO {
 	
 	int insert(VideoClickBean bean);
 	/**
@@ -21,4 +21,6 @@ public interface IVideoClickDao {
 	 * @return
 	 */
 	List<Long> getClickOrder(int type,int number);
+	
+	int updateVideoClick(long videoId,int number);
 }
