@@ -34,14 +34,16 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 		ResultSet newid = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "insert into " + TABLE_NAME + " (id,totalClick,weekClick,monthClick) " +
-					"values(?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=?,weekClick=?,monthClick=?";
+			String insert = "insert into " + TABLE_NAME + " (id,totalClick,weekClick,monthClick,type,classfied) " +
+					"values(?,?,?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=?,weekClick=?,monthClick=?";
 			pstmt = conn.prepareStatement(insert);
 			int i=1;
 			pstmt.setLong(i++,bean.getVideoId());
 			pstmt.setInt(i++,bean.getTotalClick());
 			pstmt.setInt(i++,bean.getWeekClick());
 			pstmt.setInt(i++,bean.getMonthClick());
+			pstmt.setInt(i++,bean.getType());
+			pstmt.setInt(i++,bean.getClassified());
 			pstmt.setInt(i++,bean.getTotalClick());
 			pstmt.setInt(i++,bean.getWeekClick());
 			pstmt.setInt(i++,bean.getMonthClick());
@@ -157,6 +159,55 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 				bean.setWeekClick(newid.getInt("weekClick"));
 				return bean;
 			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, pstmt, newid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<VideoClickBean> getClickOrder(int type, int classified,
+			int time, int number) {
+		PreparedStatement  pstmt = null;
+		Connection conn = null;
+		ResultSet newid = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
+			StringBuilder insert = new StringBuilder("select * from  ").append(TABLE_NAME);
+			insert.append(" where ");
+			if(type>0) insert.append(" type=? ");
+			insert.append(" classified=? ");
+			insert.append(" order by ");
+			if(time == 1)
+				insert.append("totalClick");
+			else if(time == 2)
+				insert.append("monthClick");
+			else insert.append("weekClick");
+			insert.append(" limit ?");
+			pstmt = conn.prepareStatement(insert.toString());
+			
+			int i=1;
+			if(type>0) pstmt.setInt(i++, type);
+			pstmt.setInt(i++,classified);
+			pstmt.setInt(i, number);
+			
+			newid = pstmt.executeQuery();
+			List<VideoClickBean> result = new ArrayList<VideoClickBean>();
+			while(newid.next()){
+				VideoClickBean bean = new VideoClickBean();
+				bean.setVideoId(newid.getLong("id"));
+				bean.setTotalClick(newid.getInt("totalClick"));
+				bean.setMonthClick(newid.getInt("monthClick"));
+				bean.setWeekClick(newid.getInt("weekClick"));
+				result.add(bean);
+			}
+			return result;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

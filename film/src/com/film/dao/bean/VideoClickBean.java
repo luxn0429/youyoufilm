@@ -12,6 +12,8 @@ public class VideoClickBean {
 	private int totalClick;
 	private int weekClick;
 	private int monthClick;
+	private int type;
+	private int classified;
 	public long getVideoId() {
 		return videoId;
 	}
@@ -35,5 +37,17 @@ public class VideoClickBean {
 	}
 	public void setMonthClick(int monthClick) {
 		this.monthClick = monthClick;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public int getClassified() {
+		return classified;
+	}
+	public void setClassified(int classified) {
+		this.classified = classified;
 	}
 }

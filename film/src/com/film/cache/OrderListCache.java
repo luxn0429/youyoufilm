@@ -1,7 +1,9 @@
 package com.film.cache;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.baobao.utils.cache.LRUList;
 import com.film.dao.bean.VideoBean;
@@ -12,9 +14,9 @@ import com.film.util.ConstantUtil;
 
 public class OrderListCache {
 	
-	private LRUList<Node> totalClick = new LRUList<Node>(100);
-	private LRUList<Node> weekClick = new LRUList<Node>(100);
-	private LRUList<Node> monthClick = new LRUList<Node>(100);
+	private Map<String,LRUList<Node>> totalClick = new HashMap<String,LRUList<Node>>();
+	private Map<String,LRUList<Node>> weekClick = new HashMap<String,LRUList<Node>>();
+	private Map<String,LRUList<Node>> monthClick = new HashMap<String,LRUList<Node>>();
 	
 	private OrderListCache(){
 		init();
