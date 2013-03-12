@@ -19,29 +19,37 @@ public class OrderListCache {
 	private Map<String,LRUList<Node>> monthClick = new HashMap<String,LRUList<Node>>();
 	
 	private OrderListCache(){
-		init();
 	}
 	
-	private void init(){
-		int number = 100;
+	private String getKey(int type,int classified){
+		return String.valueOf(type)+classified;
+	}
+	/**
+	 * 
+	 * @param type			电影或电视剧的类型
+	 * @param classified	电影电视剧等的分类
+	 * @param time			时间
+	 * @param number		数量
+	 */
+	private LRUList<Node> loadOrderList(int type,int classified,int time,int number){
+		
 		IVideoDAO videoDao = DaoFactory.getInstance().getVideoDAO();
-		List<VideoClickBean> ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(ConstantUtil.MONTHCLICK, number);
+		
+		List<VideoClickBean> ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(type, classified, time, number);
+		LRUList<Node> result = new LRUList<Node>(100);
 		for(VideoClickBean id:ids){
 			VideoBean bean = videoDao.getVideoBean(id.getVideoId());
-			monthClick.add(new Node(bean,id.getMonthClick()));
+			
+			result.add(new Node(bean,id.getMonthClick()));
 		}
 		
-		ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(ConstantUtil.TOTALCLICK, number);
-		for(VideoClickBean id:ids){
-			VideoBean bean = videoDao.getVideoBean(id.getVideoId());
-			totalClick.add(new Node(bean,id.getTotalClick()));
-		}
-		
-		ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(ConstantUtil.WEEKCLICK, number);
-		for(VideoClickBean id:ids){
-			VideoBean bean = videoDao.getVideoBean(id.getVideoId());
-			weekClick.add(new Node(bean,id.getWeekClick()));
-		}
+		if(time == ConstantUtil.MONTHCLICK)
+			monthClick.put(getKey(type,classified), result);
+		else if(ConstantUtil.WEEKCLICK == time)
+			weekClick.put(getKey(type,classified), result);
+		else if(ConstantUtil.TOTALCLICK == time)
+			totalClick.put(getKey(type,classified), result);
+		return result;
 	}
 	
 	private static OrderListCache instance = new OrderListCache();
@@ -88,16 +96,34 @@ public class OrderListCache {
 		Collections.sort(list);
 	}
 
-	public LRUList<Node> getTotalClick() {
-		return totalClick;
+	public LRUList<Node> getTotalClick(int type,int classified) {
+		String key = this.getKey(type, classified);
+		LRUList<Node> list = this.totalClick.get(key);
+		if(null == list){
+			list = this.loadOrderList(type, classified, ConstantUtil.TOTALCLICK, 100);
+			return list;
+		}
+		return list;
 	}
 
-	public LRUList<Node> getWeekClick() {
-		return weekClick;
+	public LRUList<Node> getWeekClick(int type,int classified) {
+		String key = this.getKey(type, classified);
+		LRUList<Node> list = this.weekClick.get(key);
+		if(null == list){
+			list = this.loadOrderList(type, classified, ConstantUtil.WEEKCLICK, 100);
+			return list;
+		}
+		return list;
 	}
 
-	public LRUList<Node> getMonthClick() {
-		return monthClick;
+	public LRUList<Node> getMonthClick(int type,int classified) {
+		String key = this.getKey(type, classified);
+		LRUList<Node> list = this.monthClick.get(key);
+		if(null == list){
+			list = this.loadOrderList(type, classified, ConstantUtil.MONTHCLICK, 100);
+			return list;
+		}
+		return list;
 	}
 	
 	
