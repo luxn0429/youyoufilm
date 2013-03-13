@@ -34,11 +34,18 @@ public class GetOrderListServlet extends BaseServlet {
 		int week = 20;
 		if(null != weekNumber) week = Integer.valueOf(weekNumber);
 		
+		String type = request.getParameter("type");
+		String classified = request.getParameter("classified");
+		
+		int type_int = -1;
+		if(null != type) type_int = Integer.valueOf(type);
+		int classified_int = Integer.valueOf(classified);
+		
 		JSONObject result = new JSONObject();
-		List<Node> totalList = OrderListCache.getInstance().getTotalClick();
+		List<Node> totalList = OrderListCache.getInstance().getTotalClick(type_int,classified_int);
 		JSONArray totalArray = getOrderList(total, totalList);
-		JSONArray monthArray = getOrderList(month,OrderListCache.getInstance().getMonthClick());
-		JSONArray weekArray = getOrderList(week,OrderListCache.getInstance().getWeekClick());
+		JSONArray monthArray = getOrderList(month,OrderListCache.getInstance().getMonthClick(type_int,classified_int));
+		JSONArray weekArray = getOrderList(week,OrderListCache.getInstance().getWeekClick(type_int,classified_int));
 		result.put("error", 0);
 		result.put("total", totalArray.toString());
 		result.put("month", monthArray.toString());

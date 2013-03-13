@@ -64,14 +64,25 @@ public class OrderListCache {
 		IVideoDAO videoDao = DaoFactory.getInstance().getVideoDAO();
 		VideoBean bean = videoDao.getVideoBean(videoId);
 		VideoClickBean click = DaoFactory.getInstance().getVideoClickDAO().getClickBean(videoId);
-		
+		String allKey = this.getKey(-1, bean.getClassified());
+		String typekey = this.getKey(bean.getType(), bean.getClassified());
 		Node nodeTotal = new Node(bean,click.getTotalClick());
-		addToList(totalClick,nodeTotal);
+		addToMap(allKey, typekey, nodeTotal,totalClick);
 		Node nodeMonth = new Node(bean,click.getMonthClick());
-		addToList(monthClick,nodeMonth);
+		addToMap(allKey, typekey, nodeMonth,monthClick);
 		Node nodeWeek = new Node(bean,click.getWeekClick());
-		addToList(weekClick,nodeWeek);
+		addToMap(allKey, typekey, nodeWeek,weekClick);
 		return bean;
+	}
+
+	private void addToMap(String allKey, String typekey, Node nodeTotal,Map<String,LRUList<Node>> map) {
+		LRUList<Node> list = map.get(allKey);
+		if(null != list){
+			addToList(list,nodeTotal);
+		}
+		list = map.get(typekey);
+		if(null != list)
+			addToList(list,nodeTotal);
 	}
 	
 	private void addToList(LRUList<Node> list,Node typeNode){
