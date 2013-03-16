@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import com.baobao.utils.*;
 
 public class PictureDownLoad {
-	private static final String PATH = "web/upload/";
+	private static final String PATH = "/var/www/html/";
 
 	/**
 	 * 下载图片

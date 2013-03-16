@@ -47,7 +47,7 @@ public class VideoDao implements IVideoDAO {
 			pstmt.setInt(i++,bean.getPubdate());
 			pstmt.setInt(i++,bean.getCaption());
 			pstmt.setInt(i++,bean.getLanguage());
-			pstmt.setInt(i++,bean.getUpdateTime());
+			pstmt.setInt(i++,(int)(System.currentTimeMillis()/1000L));
 			pstmt.setString(i++,bean.getPerformer());
 			pstmt.setString(i++,bean.getPoster());
 			pstmt.setString(i++,bean.getIntroduction());

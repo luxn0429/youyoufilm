@@ -4,6 +4,7 @@
 
 	<!-- Parameters -->
 	<property name="jar_name" value="film" />
+	<property name="slave_jarname" value="search"/>
 	<property name="target" value="1.5" />
 	<property name="source" value="1.5" />
 	<property name="version" value="0.1" />
@@ -58,10 +59,16 @@
 		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/mysql-connector-java-5.1.6-bin.jar" overwrite="true" />
 		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/servlet-api-3.0.jar" overwrite="true" />
 		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/xapool.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/asm-3.3.1.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/json-lib-2.4-jdk15.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/commons-lang-2.6.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/ezmorph-1.0.6.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/commons-collections-3.2.1.jar" overwrite="true" />
+		<copy todir="${build_dir}/lib" file="${utils_project_dir}/lib/commons-beanutils-core-1.8.0.jar" overwrite="true" />
 	</target>
 
 	<!-- Build -->
-	<target name="build" depends="init">
+	<target name="build" depends="buildsearch">
 		<echo message="Compiling ${jar_name} ..." />
 		<javac srcdir="${src_dir}" debug="${debug}" destdir="${tmp_dir}" source="${source}" target="${target}" encoding="${encoding}">
 			<classpath refid="classpath" />
@@ -93,11 +100,62 @@
 													lib/mysql-connector-java-5.1.6-bin.jar
 													lib/servlet-api-3.0.jar
 													lib/xapool.jar
+													lib/asm-3.3.1.jar
+													lib/json-lib-2.4-jdk15.jar
+													lib/commons-lang-2.6.jar
+													lib/ezmorph-1.0.6.jar
+													lib/commons-collections-3.2.1.jar
+													lib/commons-beanutils-core-1.8.0.jar
 													 ./"/>
 			
 			</manifest>
 		</jar>
 		<delete dir="${tmp_dir}" />
+	</target>
+	
+	<!-- Build -->
+	<target name="buildsearch" depends="init">
+		<echo message="Compiling ${slave_jarname} ..." />
+		<javac srcdir="${src_dir}" debug="${debug}" destdir="${tmp_dir}" source="${source}" target="${target}" encoding="${encoding}">
+			<classpath refid="classpath" />
+		</javac>
+
+		<echo message="Creating jar files ..." />
+		<jar destfile="${build_dir}/${slave_jarname}-${version}.jar" basedir="${tmp_dir}">
+			<manifest>
+				<attribute name="Main-Class" value="com.film.searchengine.SearchMain" />
+				<attribute name="Class-Path" value="lib/utils.jar 
+													lib/c3p0-0.9.1.2.jar
+													lib/commons-dbcp-1.2.2.jar
+													lib/commons-fileupload-1.2.2.jar
+													lib/commons-io-2.0.1.jar
+													lib/commons-lang3-3.0-beta.jar
+													lib/commons-pool-1.6.jar
+													lib/dom4j-1.6.1.jar
+													lib/hessian-4.0.3.jar
+													lib/jetty-all-8.1.9.v20130131.jar
+													lib/jotm-client.jar
+													lib/jotm-core.jar
+													lib/jotm-datasource.jar
+													lib/jotm-jms.jar
+													lib/jotm-standalone.jar
+													lib/jsoup-1.6.3.jar
+													lib/log4j-1.2.14.jar
+													lib/lucene-core-3.0.0.jar
+													lib/memcached-2.4.2.jar
+													lib/mysql-connector-java-5.1.6-bin.jar
+													lib/servlet-api-3.0.jar
+													lib/xapool.jar
+													lib/asm-3.3.1.jar
+													lib/json-lib-2.4-jdk15.jar
+													lib/commons-lang-2.6.jar
+													lib/ezmorph-1.0.6.jar
+													lib/commons-collections-3.2.1.jar
+													lib/commons-beanutils-core-1.8.0.jar
+													 ./"/>
+			
+			</manifest>
+		</jar>
 	</target>
 	<!-- Clean -->
 	<target name="clean">

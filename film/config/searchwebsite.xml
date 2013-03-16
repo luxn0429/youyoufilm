@@ -6,5 +6,6 @@
 	<web>
 		<url>http://www.xigua110.com</url>
 		<parser>com.film.searchengine.XiguaParser</parser>
+		<updateUrl>new.html</updateUrl>
 	</web>
 </webs>

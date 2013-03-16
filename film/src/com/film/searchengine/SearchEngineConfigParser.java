@@ -70,14 +70,16 @@ public class SearchEngineConfigParser extends BaseFile {
 			for(Element web:webNodes){
 				Element urlNode = web.element("url");
 				Element parserNode = web.element("parser");
+				Element updateNode = web.element("updateUrl");
 				String url = urlNode.getText();
 				String classPath = parserNode.getText();
 				Class<?> newoneClass = Class.forName(classPath);
-				Class<?>[] args = new Class[1];
+				Class<?>[] args = new Class[2];
 				args[0] = String.class;
+				args[1] = String.class;
 				
 				Constructor cons = newoneClass.getConstructor(args);
-				SearchEngine engine = (SearchEngine)cons.newInstance(url);
+				SearchEngine engine = (SearchEngine)cons.newInstance(url,updateNode.getText());
 				url2Engine.put(url, engine);
 			}
 			
@@ -106,7 +108,8 @@ public class SearchEngineConfigParser extends BaseFile {
 		System.out.println(url.size());
 		for(Map.Entry<String,SearchEngine> entry:url.entrySet()){
 			SearchEngine engine = entry.getValue();
-			engine.searchWebSite();
+			//engine.searchWebSite();
+			engine.searchUpdate();
 		}
 	}
 }
