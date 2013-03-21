@@ -3,12 +3,14 @@ package com.baobao.utils.webtool;
 import java.net.UnknownHostException;
 
 import org.apache.log4j.Logger;
-import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.DefaultHandler;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 
@@ -37,6 +39,7 @@ public class JettyApplication {
     	//connector.setHost();
     	connector.setMaxIdleTime(30000);
         connector.setRequestHeaderSize(8192);
+        
         httpServer.setConnectors(new Connector[] { connector });
 
         WebAppContext queryContext = new WebAppContext ();

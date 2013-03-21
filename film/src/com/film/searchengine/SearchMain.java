@@ -23,17 +23,16 @@ public class SearchMain {
 			Thread thread = new Thread(new Runnable(){
 				@Override
 				public void run() {
-					Map<String,SearchEngine> url = SearchEngineConfigParser.getInstance().getAllEngine();
-					System.out.println("start update today"+url.size());
-					for(Map.Entry<String,SearchEngine> entry:url.entrySet()){
-						SearchEngine engine = entry.getValue();
-						//engine.searchWebSite();
-						engine.searchUpdate();
-					}
-					
 					try {
+						Map<String,SearchEngine> url = SearchEngineConfigParser.getInstance().getAllEngine();
+						System.out.println("start update today"+url.size());
+						for(Map.Entry<String,SearchEngine> entry:url.entrySet()){
+							SearchEngine engine = entry.getValue();
+							//engine.searchWebSite();
+							engine.searchUpdate();
+						}
 						Thread.sleep(6*60*60*1000L);
-					} catch (InterruptedException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
