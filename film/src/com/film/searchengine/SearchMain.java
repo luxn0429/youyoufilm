@@ -46,6 +46,14 @@ public class SearchMain {
 				}
 			});
 			thread.start();
+			
+			while(true){
+				try {
+					Thread.sleep(10000000L);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		///增量索引
 		Thread monitor = new Thread(IndexBuildTask.getInstance());

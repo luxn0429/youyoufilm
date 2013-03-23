@@ -441,7 +441,7 @@ public class DBCPManager {
      * @return
      */
     public synchronized Connection getConnection(String dbname, int type) throws SQLException {
-    	Logger.getLogger(this.getClass()).info("try to get a connection:dbname="+dbname+";type="+type);
+    	///Logger.getLogger(this.getClass()).info("try to get a connection:dbname="+dbname+";type="+type);
     	if(type<0||type>7){
     		Logger.getLogger(this.getClass()).error("getConnection("+dbname+","+type+") failed: type is invalid");
     		return null;
