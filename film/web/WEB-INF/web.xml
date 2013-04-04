@@ -29,7 +29,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchVideo</servlet-name>
-    <url-pattern>/p/searchvideo</url-pattern>
+    <url-pattern>/searchvideo</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -38,7 +38,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetVideoVolum</servlet-name>
-    <url-pattern>/p/getvideovolum</url-pattern>
+    <url-pattern>/getvideovolum</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -47,7 +47,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetVolum</servlet-name>
-    <url-pattern>/p/getvolum</url-pattern>
+    <url-pattern>/getvolum</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -56,7 +56,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ClickVideo</servlet-name>
-    <url-pattern>/p/clickvideo</url-pattern>
+    <url-pattern>/clickvideo</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -65,7 +65,17 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetClickOrder</servlet-name>
-    <url-pattern>/p/getclickorder</url-pattern>
+    <url-pattern>/getclickorder</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>com.film.servlet.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/search</url-pattern>
   </servlet-mapping>
   
   

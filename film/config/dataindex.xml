@@ -1,0 +1,39 @@
+<configs>
+	<searchurl>http://10.68.40.11:8983/solr</searchurl>
+	<config id="1" enable="false">
+		<!-- http://172.16.2.84:8983/solr/dataimport-yt-role?command=full-import&clean=true&commit=true -->	
+		<!-- Hession Basic URL -->
+		<url>http://localhost:8080/solr</url>
+		
+		<!-- The name of the request handler. See "solrconfig.xml". -->
+		<requesthandler>/dataimport </requesthandler>
+		
+		<!-- Time that the first indexing operation will be carried out -->
+		<start>1:30:00</start>
+		
+		<!-- Time Interval between 2 indexing operations (millisecond) [24h = 86400000 ms]-->
+		<interval>86400000</interval>
+		
+		<!-- Command Type: full-import OR delta-import. Default: delta-import -->
+		<command>full-import</command>
+		
+		<!-- Clean or not -->
+		<clean>false</clean>
+	
+		<!-- Commit or not -->
+		<commit>true</commit>
+	</config>
+	
+	<config id="2" enable="false">
+		<url>http://10.68.40.11:8983/solr</url>
+		
+		<requesthandler>/dataimport </requesthandler>
+		<start>1:30:00</start>
+		<!-- Time Interval delta-import indexing operations (millisecond) [20minutes = 1200000 ms]-->
+		<interval>1200000</interval>
+		<!-- Command Type: full-import OR delta-import. Default: delta-import -->
+		<command>delta-import</command>
+		<clean>false</clean>
+		<commit>true</commit>
+	</config>
+</configs>
