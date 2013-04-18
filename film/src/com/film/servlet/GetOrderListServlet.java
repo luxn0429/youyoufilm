@@ -24,9 +24,9 @@ public class GetOrderListServlet extends BaseServlet {
 	@Override
 	protected String dealRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String monthNumber = request.getParameter("monthNumber");
-		String totalNumber = request.getParameter("totalNumber");
-		String weekNumber  = request.getParameter("weekNumber");
+		String monthNumber = request.getParameter("monthnumber");
+		String totalNumber = request.getParameter("totalnumber");
+		String weekNumber  = request.getParameter("weeknumber");
 		int month = 20;
 		if(null != monthNumber) month = Integer.valueOf(monthNumber);
 		int total = 20;

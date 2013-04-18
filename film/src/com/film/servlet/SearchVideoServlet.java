@@ -43,7 +43,7 @@ public class SearchVideoServlet extends BaseServlet {
 		String endTime = request.getParameter("end");
 		///页码
 		String page = request.getParameter("page");
-		String pageNumber = request.getParameter("pageNumber");
+		String pageNumber = request.getParameter("pagenumber");
 		
 		VideoFilter filter = new VideoFilter();
 		if(null != country)
@@ -68,7 +68,8 @@ public class SearchVideoServlet extends BaseServlet {
 		filter.setStartLine(startline);
 		
 		List<VideoBean> videoList = DaoFactory.getInstance().getVideoDAO().getVideoByType(filter);
-		
+		int number =  DaoFactory.getInstance().getVideoDAO().getVideoNumberByType(filter);
+		int totalPage = number/pageNum;
 		JSON json = JSONSerializer.toJSON(videoList);
 		JSONObject result = new JSONObject();
 		if(null == json){
@@ -76,6 +77,8 @@ public class SearchVideoServlet extends BaseServlet {
 		}else{
 			result.put("error", 0);
 			result.put("ret", json.toString());
+			result.put("totalNumber", number);
+			result.put("totalPage",totalPage);
 		}
 		return result.toString();
 	}
@@ -87,6 +90,9 @@ public class SearchVideoServlet extends BaseServlet {
 		filter.setPageNumber(20);
 		
 		List<VideoBean> videoList = DaoFactory.getInstance().getVideoDAO().getVideoByType(filter);
+		
+		int number =  DaoFactory.getInstance().getVideoDAO().getVideoNumberByType(filter);
+		System.out.println(number);
 		
 		JSON json = JSONSerializer.toJSON(videoList);
 		

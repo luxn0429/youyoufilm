@@ -59,19 +59,24 @@ public class ConstantUtil {
 	 * @author luxianginng
 	 *
 	 */
-	public static enum CATEGORY{							   //剧情
-		ACTION (11), COMED(12), ROMANCE(13), FICTION (14), WAR (15),DRAMA(16), CARTOON (17),FUN(18),ANCIENT(19),
-		MODERN (20), WUXIA(21), CITY (22), XUANYI (23), YANQING (24),MYTH(25),HISTORY(26),SUPERSTAR(27),HORROR(28);
-
+	public static enum CATEGORY{
+		///电视剧
+		CHINA (101), HONGKONG(102), TAIWAN (103), KOREA (104), AMERICA (105),JAPA(106),
+		THAI (107),SINGAPORE(108),FRANCE(109),RUSSIA(110),
+		//电影
+		ACTION (201), COMED(202), ROMANCE(203), FICTION (204), WAR (205),DRAMA(206), 
+		ANCIENT(207),MODERN (208), WUXIA(209), CITY (210), XUANYI (211), YANQING (212),MYTH(213),HISTORY(214),HORROR(228),
+		SUPERSTAR(300),///明星合集
+		CARTOON (400),///卡通
+		FUN(500);///综艺娱乐
+		
         private final int index;
 
         CATEGORY (int ind) {
-
             this.index = ind;
         }
 
         public int getIndex () {
-
             return index;
         }
 	}

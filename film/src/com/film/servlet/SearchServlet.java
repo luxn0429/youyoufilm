@@ -58,18 +58,23 @@ public class SearchServlet extends BaseServlet {
     	search.setStartRow((start-1)*pageNumber);
     	search.setRowNumber(pageNumber);
     	List<Long> list = SolrWeiboInfoClient.getInstance().doSearch(search);
+    	long number = SolrWeiboInfoClient.getInstance().getNumfound(search);
+    	int totalPage = (int)number/pageNumber;
     	List<VideoBean> tempList = new ArrayList<VideoBean>();
     	for(Long i:list){
     		VideoBean bean = DaoFactory.getInstance().getVideoDAO().getVideoBean(i);
     		if(null != bean)
     			tempList.add(bean);
     	}
+    	//int totalNumber = 
     	JSON json = JSONSerializer.toJSON(tempList);
 		if(null == json){
 			result.put("error", -1);
 		}else{
 			result.put("error", 0);
 			result.put("ret", json.toString());
+			result.put("totalNumber", number);
+			result.put("totalPage", totalPage);
 		}
 		return result.toString();
 	}

@@ -105,6 +105,13 @@ public class VideoDao implements IVideoDAO {
 				isFirst = false;
 			}
 			
+			if(filter.getType() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append(" type=").append(filter.getType());
+				isFirst = false;
+			}
+			
 			if(filter.getStartPubDate() != -1){
 				if(!isFirst)
 					select.append(" and ");
@@ -119,15 +126,15 @@ public class VideoDao implements IVideoDAO {
 				isFirst = false;
 			}
 			
-			if(filter.getType() != -1){
+			/*if(filter.getType() != -1){
 				if(!isFirst)
 					select.append(" and ");
 				select.append(" type like ',").append(filter.getType()).append(",'");
 				isFirst = false;
-			}
+			}*/
 		}
 		
-		select.append(" limit ").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
+		select.append(" order by updateTime desc limit ").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -136,9 +143,10 @@ public class VideoDao implements IVideoDAO {
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
 			stmt = conn.prepareStatement(select.toString());
 			rs = stmt.executeQuery();
-			if (!rs.first())
-				return null;
+			
 			List<VideoBean> result = new ArrayList<VideoBean>();
+			if (!rs.first())
+				return result;
 			while(rs.next()){
 				VideoBean bean = getBean(rs);
 				result.add(bean);
@@ -226,4 +234,81 @@ public class VideoDao implements IVideoDAO {
 		return bean;
 	}
 
+	@Override
+	public int getVideoNumberByType(VideoFilter filter) {
+		StringBuffer select = new StringBuffer("select count(*) from ");
+		select.append(TABLE_NAME);
+		
+		
+		if(filter.getLanguate() != -1 || filter.getCountry()!= -1 || 
+				filter.getType() != -1 || filter.getStartPubDate() != -1){
+			select.append(" where ");
+			
+			boolean isFirst = true;
+			if(filter.getLanguate() != -1){
+				select.append(" language=").append(filter.getLanguate());
+				isFirst = false;
+			}
+			
+			if(filter.getCountry() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append("country=").append(filter.getCountry());
+				isFirst = false;
+			}
+			
+			if(filter.getType() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append(" type=").append(filter.getType());
+				isFirst = false;
+			}
+			
+			if(filter.getStartPubDate() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append(" pubdate>=").append(filter.getStartPubDate());
+				isFirst = false;
+			}
+			
+			if(filter.getEndPubDate() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append(" pubdate<=").append(filter.getEndPubDate());
+				isFirst = false;
+			}
+			
+			/*if(filter.getType() != -1){
+				if(!isFirst)
+					select.append(" and ");
+				select.append(" type like ',").append(filter.getType()).append(",'");
+				isFirst = false;
+			}*/
+		}
+		
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			stmt = conn.prepareStatement(select.toString());
+			rs = stmt.executeQuery();
+			
+			if (!rs.first())
+				return 0;
+			return rs.getInt(1);
+		}catch(SQLException e){
+			System.out.println(select.toString());
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
 }

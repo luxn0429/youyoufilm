@@ -57,21 +57,21 @@ public class XiguaParser extends SearchEngine {
 			String href = link.attr("href");
 			///解析电视剧
 			if(href.contains("korea")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,ConstantUtil.CATEGORY.KOREA,href));
 			}else if(href.contains("occident")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.AMERICA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.AMERICA,ConstantUtil.CATEGORY.AMERICA,href));
 			}else if(href.contains("tvb")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.HONGKONG,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.HONGKONG,ConstantUtil.CATEGORY.HONGKONG,href));
 			}else if(href.contains("idol")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.TAIWAN,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.TAIWAN,ConstantUtil.CATEGORY.TAIWAN,href));
 			}else if(href.contains("japan")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.JAPA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.JAPA,ConstantUtil.CATEGORY.JAPA,href));
 			}else if(href.contains("inland")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.CHINA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.CHINA,ConstantUtil.CATEGORY.CHINA,href));
 			}else if(href.contains("singapore")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.SINGAPORE,ConstantUtil.CATEGORY.SINGAPORE,href));
 			}else if(href.contains("korea")){
-				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,null,href));
+				EXEC.submit(new GetVideos(ConstantUtil.COUNTRY.KOREA,ConstantUtil.CATEGORY.KOREA,href));
 			}else if(href.contains("cartoon")){
 				EXEC.submit(new GetVideos(null,ConstantUtil.CATEGORY.CARTOON,href));
 			}
@@ -186,7 +186,8 @@ public class XiguaParser extends SearchEngine {
 						bean.setType(type.getIndex());
 					if(country != null)
 						bean.setClassified(ConstantUtil.CLASSIFIED.SERIES.getIndex());
-					
+					else
+						bean.setClassified(ConstantUtil.CLASSIFIED.FILM.getIndex());
 					getVideoBean(desPath,bean);
 				}
 			}

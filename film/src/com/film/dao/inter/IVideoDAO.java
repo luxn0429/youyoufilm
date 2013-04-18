@@ -31,6 +31,12 @@ public interface IVideoDAO {
 	 */
 	List<VideoBean> getVideoByType(VideoFilter filter);
 	/**
+	 * 得到数据量
+	 * @param filter   查询过滤
+	 * @return
+	 */
+	int getVideoNumberByType(VideoFilter filter);
+	/**
 	 * 
 	 * @param videoId	得到一个视频
 	 * @return
