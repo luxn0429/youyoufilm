@@ -77,8 +77,11 @@ public class SearchVideoServlet extends BaseServlet {
 		}else{
 			result.put("error", 0);
 			result.put("ret", json.toString());
-			result.put("totalNumber", number);
-			result.put("totalPage",totalPage);
+			JSONObject pageInfo = new JSONObject();
+			pageInfo.put("activePage",page);
+			pageInfo.put("totalNumber", number);
+			pageInfo.put("totalPage", totalPage);
+			result.put("pageInfo", pageInfo);
 		}
 		return result.toString();
 	}

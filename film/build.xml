@@ -139,7 +139,7 @@
 		<jar destfile="${build_dir}/${slave_jarname}-${version}.jar" basedir="${tmp_dir}">
 			<manifest>
 				<attribute name="Main-Class" value="com.film.searchengine.SearchMain" />
-				<attribute name="Class-Path" value="lib/utils.jar 
+				Latest	<attribute name="Class-Path" value="lib/utils.jar 
 													lib/c3p0-0.9.1.2.jar
 													lib/commons-dbcp-1.2.2.jar
 													lib/commons-fileupload-1.2.2.jar

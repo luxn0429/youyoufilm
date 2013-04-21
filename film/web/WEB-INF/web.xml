@@ -77,7 +77,14 @@
     <servlet-name>Search</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
-  
+   <servlet>
+    <servlet-name>Latest</servlet-name>
+    <servlet-class>com.film.servlet.GetLatestVideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Latest</servlet-name>
+    <url-pattern>/latest</url-pattern>
+  </servlet-mapping>
   
   <!-- Uncomment to override the setup of the test filter -->
   <!-- 

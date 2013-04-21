@@ -72,9 +72,13 @@ public class SearchServlet extends BaseServlet {
 			result.put("error", -1);
 		}else{
 			result.put("error", 0);
+			
 			result.put("ret", json.toString());
-			result.put("totalNumber", number);
-			result.put("totalPage", totalPage);
+			JSONObject pageInfo = new JSONObject();
+			pageInfo.put("activePage",start);
+			pageInfo.put("totalNumber", number);
+			pageInfo.put("totalPage", totalPage);
+			result.put("pageInfo", pageInfo);
 		}
 		return result.toString();
 	}

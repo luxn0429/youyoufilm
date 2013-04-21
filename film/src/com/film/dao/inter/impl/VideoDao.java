@@ -310,5 +310,52 @@ public class VideoDao implements IVideoDAO {
 		}
 		return 0;
 	}
+
+	@Override
+	public List<VideoBean> getLatestVideo(int type, int number) {
+		StringBuffer select = new StringBuffer("select * from ");
+		select.append(TABLE_NAME);
+		
+		int startType = type;;
+		int endType = 0;
+		if(type == 100){
+			endType = 199;
+		}else if(type == 200){
+			endType = 299;
+		}else{
+			endType = type;
+		}
+		select.append(" where type >=").append(startType);
+		select.append(" and type<= ").append(endType);
+		select.append(" order by pubdate desc,updateTime desc limit ").append(number);
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			stmt = conn.prepareStatement(select.toString());
+			rs = stmt.executeQuery();
+			
+			List<VideoBean> result = new ArrayList<VideoBean>();
+			if (!rs.first())
+				return result;
+			while(rs.next()){
+				VideoBean bean = getBean(rs);
+				result.add(bean);
+			}
+			return result;
+		}catch(SQLException e){
+			System.out.println(select.toString());
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 	
 }

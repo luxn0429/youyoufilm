@@ -30,6 +30,14 @@ public interface IVideoDAO {
 	 * @return
 	 */
 	List<VideoBean> getVideoByType(VideoFilter filter);
+	
+	/**
+	 * 得到最近影片
+	 * @param type
+	 * @param number
+	 * @return
+	 */
+	List<VideoBean> getLatestVideo(int type,int number);
 	/**
 	 * 得到数据量
 	 * @param filter   查询过滤
