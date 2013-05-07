@@ -21,12 +21,16 @@ public class SearchMain {
 				SearchEngine engine = entry.getValue();
 				engine.searchWebSite();
 			}
-		}else{
+		}else if(searchAll.equals("delete")){
+			
+		}else if(searchAll.equals("update")){
 			Thread thread = new Thread(new Runnable(){
 				@Override
 				public void run() {
 					while(true){
 						try {
+							
+							
 							Map<String,SearchEngine> url = SearchEngineConfigParser.getInstance().getAllEngine();
 							System.out.println("start update today"+url.size());
 							for(Map.Entry<String,SearchEngine> entry:url.entrySet()){

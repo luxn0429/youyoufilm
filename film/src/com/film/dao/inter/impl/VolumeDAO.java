@@ -260,4 +260,27 @@ public class VolumeDAO implements IVolumeDAO {
 		return null;
 	}
 
+	@Override
+	public boolean updatePlayer(String md5, int player) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			stmt = conn.prepareStatement("UPDATE "+TABLE_NAME +" SET player=? WHERE md5=?");
+			stmt.setInt(1, player);
+			stmt.setString(2,md5);
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 }

@@ -24,28 +24,21 @@ public class GetOrderListServlet extends BaseServlet {
 	@Override
 	protected String dealRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String monthNumber = request.getParameter("monthnumber");
-		String totalNumber = request.getParameter("totalnumber");
-		String weekNumber  = request.getParameter("weeknumber");
-		int month = 20;
-		if(null != monthNumber) month = Integer.valueOf(monthNumber);
-		int total = 20;
-		if(null != totalNumber) total = Integer.valueOf(totalNumber);
-		int week = 20;
-		if(null != weekNumber) week = Integer.valueOf(weekNumber);
+		String number = request.getParameter("number");
+		
+		int int_number = 20;
+		if(null != number) int_number = Integer.valueOf(number);
 		
 		String type = request.getParameter("type");
-		String classified = request.getParameter("classified");
 		
 		int type_int = -1;
 		if(null != type) type_int = Integer.valueOf(type);
-		int classified_int = Integer.valueOf(classified);
 		
 		JSONObject result = new JSONObject();
-		List<Node> totalList = OrderListCache.getInstance().getTotalClick(type_int,classified_int);
-		JSONArray totalArray = getOrderList(total, totalList);
-		JSONArray monthArray = getOrderList(month,OrderListCache.getInstance().getMonthClick(type_int,classified_int));
-		JSONArray weekArray = getOrderList(week,OrderListCache.getInstance().getWeekClick(type_int,classified_int));
+		List<Node> totalList = OrderListCache.getInstance().getTotalClick(type_int);
+		JSONArray totalArray = getOrderList(int_number, totalList);
+		JSONArray monthArray = getOrderList(int_number,OrderListCache.getInstance().getMonthClick(type_int));
+		JSONArray weekArray = getOrderList(int_number,OrderListCache.getInstance().getWeekClick(type_int));
 		result.put("error", 0);
 		result.put("total", totalArray.toString());
 		result.put("month", monthArray.toString());

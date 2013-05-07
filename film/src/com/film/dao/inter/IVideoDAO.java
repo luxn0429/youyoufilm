@@ -55,4 +55,10 @@ public interface IVideoDAO {
 	 * @param beanId
 	 */
 	boolean delete(long beanId);
+	/**
+	 * 通过影片名字得到影片
+	 * @param name		影片名字
+	 * @return
+	 */
+	long getVideoID(String name);
 }

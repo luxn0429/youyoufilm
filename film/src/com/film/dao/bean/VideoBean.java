@@ -38,7 +38,7 @@ public class VideoBean{
 	//清晰度
 	private String clarity;
 	///分类 1 电影 2 电视剧 3综艺娱乐
-	private int classified;
+	private int classified; ////不用
 
 	private String seriousIntro;
 	

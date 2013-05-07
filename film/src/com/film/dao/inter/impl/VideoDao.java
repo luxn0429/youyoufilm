@@ -134,7 +134,7 @@ public class VideoDao implements IVideoDAO {
 			}*/
 		}
 		
-		select.append(" order by updateTime desc limit ").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
+		select.append(" order by pubdate DESC,updateTime DESC limit ").append(filter.getStartLine()).append(",").append(filter.getPageNumber());
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -145,8 +145,6 @@ public class VideoDao implements IVideoDAO {
 			rs = stmt.executeQuery();
 			
 			List<VideoBean> result = new ArrayList<VideoBean>();
-			if (!rs.first())
-				return result;
 			while(rs.next()){
 				VideoBean bean = getBean(rs);
 				result.add(bean);
@@ -340,8 +338,10 @@ public class VideoDao implements IVideoDAO {
 			List<VideoBean> result = new ArrayList<VideoBean>();
 			if (!rs.first())
 				return result;
+			VideoBean bean = getBean(rs);
+			result.add(bean);
 			while(rs.next()){
-				VideoBean bean = getBean(rs);
+				bean = getBean(rs);
 				result.add(bean);
 			}
 			return result;
@@ -356,6 +356,32 @@ public class VideoDao implements IVideoDAO {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public long getVideoID(String name) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		String select = "select id from "+TABLE_NAME+" where name=?";
+		try{
+			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(),DBConstants.HASH_QUERY_BASIC);
+			stmt = conn.prepareStatement(select.toString());
+			stmt.setString(1,name);
+			rs = stmt.executeQuery();
+			if(rs.next()){
+				return rs.getLong(1);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbcpManager.closeConnection(conn, stmt, rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
 	}
 	
 }

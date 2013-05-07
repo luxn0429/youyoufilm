@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.baobao.utils.dbtool.DBCPManager;
 import com.baobao.utils.dbtool.DBConstants;
 import com.baobao.utils.dbtool.DBNameManager;
@@ -34,7 +36,7 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 		ResultSet newid = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			String insert = "insert into " + TABLE_NAME + " (id,totalClick,weekClick,monthClick,type,classfied) " +
+			String insert = "insert into " + TABLE_NAME + " (id,totalClick,weekClick,monthClick,type,classified) " +
 					"values(?,?,?,?,?,?) ON DUPLICATE KEY UPDATE totalClick=?,weekClick=?,monthClick=?";
 			pstmt = conn.prepareStatement(insert);
 			int i=1;
@@ -172,29 +174,30 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 	}
 
 	@Override
-	public List<VideoClickBean> getClickOrder(int type, int classified,
-			int time, int number) {
+	public List<VideoClickBean> getClickOrder(int type,int time, int number) {
 		PreparedStatement  pstmt = null;
 		Connection conn = null;
 		ResultSet newid = null;
+		StringBuilder insert = null;
 		try{
 			conn = dbcpManager.getConnection(DBNameManager.getPubDBName(), DBConstants.HASH_UPDATE_BASIC);
-			StringBuilder insert = new StringBuilder("select * from  ").append(TABLE_NAME);
-			insert.append(" where ");
-			if(type>0) insert.append(" type=? ");
-			insert.append(" classified=? ");
+			insert = new StringBuilder("select * from  ").append(TABLE_NAME);
+			
+			if(type>0) {insert.append(" where "); insert.append(" type>=? and type<?");}
 			insert.append(" order by ");
 			if(time == 1)
 				insert.append("totalClick");
 			else if(time == 2)
 				insert.append("monthClick");
 			else insert.append("weekClick");
-			insert.append(" limit ?");
+			insert.append(" desc limit ?");
 			pstmt = conn.prepareStatement(insert.toString());
 			
 			int i=1;
-			if(type>0) pstmt.setInt(i++, type);
-			pstmt.setInt(i++,classified);
+			if(type>0) {
+				pstmt.setInt(i++, type);
+				pstmt.setInt(i++, type+100);
+			}
 			pstmt.setInt(i, number);
 			
 			newid = pstmt.executeQuery();
@@ -209,6 +212,7 @@ public class VideoClickDaoImpl implements IVideoClickDAO {
 			}
 			return result;
 		}catch(SQLException e){
+			Logger.getLogger(this.getClass()).error("click error:"+insert.toString());
 			e.printStackTrace();
 		}finally{
 			try {

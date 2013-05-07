@@ -48,4 +48,11 @@ public interface IVolumeDAO {
 	 * @return
 	 */
 	boolean exist(long belongTo,String md5);
+	/**
+	 * 更新播放器类型
+	 * @param md5		连接 
+	 * @param player
+	 * @return
+	 */
+	boolean updatePlayer(String md5,int player);
 }

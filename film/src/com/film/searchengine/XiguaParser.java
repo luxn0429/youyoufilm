@@ -42,7 +42,7 @@ public class XiguaParser extends SearchEngine {
 	 */
 	@Override
 	protected void searchWebSite() {
-		String html = SearchWebPageUtil.getUrlContent(this.url,encode);
+		String html = SearchWebPageUtil.getUrlUseProxyContent(this.url,encode);
 		Document doc = Jsoup.parse(html);
 		
 		Elements nav = doc.getElementsByAttributeValue("class","navtop");
@@ -136,7 +136,7 @@ public class XiguaParser extends SearchEngine {
 		 * @see com.film.searchengine.SearchEngine#parseVideo(int, java.lang.String)
 		 */
 		protected void parseVideo(String path) {
-			String html = SearchWebPageUtil.getUrlContent(url+path,encode);
+			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Logger.getLogger(this.getClass()).info("get page:"+url+path);
 			Document doc = Jsoup.parse(html);
 			Element videoDoc = doc.getElementsByAttributeValue("class", "vodlist_l box").first();
@@ -206,7 +206,7 @@ public class XiguaParser extends SearchEngine {
 		}
 		
 		public void getVideoBean(String path,VideoBean bean){
-			String html = SearchWebPageUtil.getUrlContent(url+path,encode);
+			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Document doc = Jsoup.parse(html);
 			Element video = doc.getElementsByAttributeValue("class", "vod_l").first();
 			Element pictureElement = video.getElementsByAttributeValue("class", "pic").first();
@@ -325,8 +325,10 @@ public class XiguaParser extends SearchEngine {
 				}
 			}
 			int id = DaoFactory.getInstance().getVideoDAO().insert(bean);
-			if(id <0)
-				return;
+			if(id <0){
+				id = (int)DaoFactory.getInstance().getVideoDAO().getVideoID(bean.getName());
+				if(id<0) return;
+			}
 			Map<Integer,List<VolumeBean>> volumeResult = parseVolume(doc,id);
 			if(!DaoFactory.getInstance().getVolumeDAO().insert(volumeResult))
 				return;
@@ -343,24 +345,31 @@ public class XiguaParser extends SearchEngine {
 				Element videoHref = videoList.first();
 				Elements links = videoHref.getElementsByTag("a");
 				if(null != links){
-					Element href = links.first();
-					String path = href.attr("href");
-					String page = SearchWebPageUtil.getUrlContent(url+path,encode);
-					Document docNative = Jsoup.parse(page);
-					Elements playing = docNative.getElementsByAttributeValue("class", "playing");
-					if(null != playing){
-						Element play = playing.first();
-						Elements script = play.getElementsByTag("script");
-						for(int i=0;i<script.size();i++){
-							Element temp = script.get(i);
-							String scriptSrc = temp.attr("src");
-							if(scriptSrc == null || scriptSrc.trim().length() == 0)
-								continue;
-							String volumnString = SearchWebPageUtil.getUrlContent(url+scriptSrc,encode);
-							return parseVideVolumn(volumnString,videoID);
+					try{
+						Element href = links.first();
+						String path = href.attr("href");
+						String page = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
+						Document docNative = Jsoup.parse(page);
+						Elements playing = docNative.getElementsByAttributeValue("class", "playing");
+						if(null != playing && playing.first()!=null){
+							Element play = playing.first();
+							
+							Elements script = play.getElementsByTag("script");
+							for(int i=0;i<script.size();i++){
+								Element temp = script.get(i);
+								String scriptSrc = temp.attr("src");
+								if(scriptSrc == null || scriptSrc.trim().length() == 0)
+									continue;
+								String volumnString = SearchWebPageUtil.getUrlUseProxyContent(url+scriptSrc,encode);
+								return parseVideVolumn(volumnString,videoID);
+							}
 						}
+					}catch(Exception e){
+						e.printStackTrace();
+						System.out.println(document.html());
 					}
 				}
+				
 			}
 			return null;
 		}
@@ -382,13 +391,13 @@ public class XiguaParser extends SearchEngine {
 					p2v = p.split("\\$");
 				}
 				int playerPlat = 0;
-				if(p2v[0].contains("百度")){
+				if(p2v[0].contains("百度")||p.toLowerCase().contains("bdhd")){
 					playerPlat = PLATFORM.BAIDU.getIndex();
-				}else if(p2v[0].contains("优酷")){
+				}else if(p2v[0].contains("优酷") || p.toLowerCase().contains("youku")){
 					playerPlat = PLATFORM.YOUKU.getIndex();
-				}else if(p2v[0].contains("土豆")){
+				}else if(p2v[0].contains("土豆") || p.toLowerCase().contains("tudou")){
 					playerPlat = PLATFORM.TUDOU.getIndex();
-				}else if(p2v[0].toLowerCase().contains("qvod")){
+				}else if(p2v[0].toLowerCase().contains("qvod") || p.toLowerCase().contains("qvod")){
 					playerPlat = PLATFORM.QVOD.getIndex();
 				}
 				List<VolumeBean> list = result.get(playerPlat);
@@ -406,8 +415,10 @@ public class XiguaParser extends SearchEngine {
 					bean.setVolume(temp[0]);
 					bean.setMd5(MD5.StringToMd5String(bean.getUrl()));
 					////如果视频存在则不更新
-					if(DaoFactory.getInstance().getVolumeDAO().exist(video, bean.getMd5()))
+					if(DaoFactory.getInstance().getVolumeDAO().exist(video, bean.getMd5())){
+						DaoFactory.getInstance().getVolumeDAO().updatePlayer(bean.getMd5(), bean.getPlayer());
 						continue;
+					}
 					list.add(bean);
 				}
 			}
@@ -417,7 +428,7 @@ public class XiguaParser extends SearchEngine {
 
 	
 	public void searchUpdate(){
-		String html = SearchWebPageUtil.getUrlContent(this.url+"/"+this.updateUrl,encode);
+		String html = SearchWebPageUtil.getUrlUseProxyContent(this.url+"/"+this.updateUrl,encode);
 		Document doc = Jsoup.parse(html);
 		Elements nav = doc.getElementsByAttributeValue("class","box");
 		for(int i=0;i<nav.size();i++){

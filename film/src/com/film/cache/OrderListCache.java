@@ -14,28 +14,24 @@ import com.film.util.ConstantUtil;
 
 public class OrderListCache {
 	
-	private Map<String,LRUList<Node>> totalClick = new HashMap<String,LRUList<Node>>();
-	private Map<String,LRUList<Node>> weekClick = new HashMap<String,LRUList<Node>>();
-	private Map<String,LRUList<Node>> monthClick = new HashMap<String,LRUList<Node>>();
+	private Map<Integer,LRUList<Node>> totalClick = new HashMap<Integer,LRUList<Node>>();
+	private Map<Integer,LRUList<Node>> weekClick = new HashMap<Integer,LRUList<Node>>();
+	private Map<Integer,LRUList<Node>> monthClick = new HashMap<Integer,LRUList<Node>>();
 	
 	private OrderListCache(){
 	}
 	
-	private String getKey(int type,int classified){
-		return String.valueOf(type)+classified;
-	}
 	/**
 	 * 
 	 * @param type			电影或电视剧的类型
-	 * @param classified	电影电视剧等的分类
 	 * @param time			时间
 	 * @param number		数量
 	 */
-	private LRUList<Node> loadOrderList(int type,int classified,int time,int number){
+	private LRUList<Node> loadOrderList(int type,int time,int number){
 		
 		IVideoDAO videoDao = DaoFactory.getInstance().getVideoDAO();
 		
-		List<VideoClickBean> ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(type, classified, time, number);
+		List<VideoClickBean> ids = DaoFactory.getInstance().getVideoClickDAO().getClickOrder(type, time, number);
 		LRUList<Node> result = new LRUList<Node>(100);
 		for(VideoClickBean id:ids){
 			VideoBean bean = videoDao.getVideoBean(id.getVideoId());
@@ -44,11 +40,11 @@ public class OrderListCache {
 		}
 		
 		if(time == ConstantUtil.MONTHCLICK)
-			monthClick.put(getKey(type,classified), result);
+			monthClick.put(type, result);
 		else if(ConstantUtil.WEEKCLICK == time)
-			weekClick.put(getKey(type,classified), result);
+			weekClick.put(type, result);
 		else if(ConstantUtil.TOTALCLICK == time)
-			totalClick.put(getKey(type,classified), result);
+			totalClick.put(type, result);
 		return result;
 	}
 	
@@ -64,18 +60,19 @@ public class OrderListCache {
 		IVideoDAO videoDao = DaoFactory.getInstance().getVideoDAO();
 		VideoBean bean = videoDao.getVideoBean(videoId);
 		VideoClickBean click = DaoFactory.getInstance().getVideoClickDAO().getClickBean(videoId);
-		String allKey = this.getKey(-1, bean.getClassified());
-		String typekey = this.getKey(bean.getType(), bean.getClassified());
+		if(null == click)
+			return bean;
+		Integer allKey = -1;
 		Node nodeTotal = new Node(bean,click.getTotalClick());
-		addToMap(allKey, typekey, nodeTotal,totalClick);
+		addToMap(allKey, bean.getType(), nodeTotal,totalClick);
 		Node nodeMonth = new Node(bean,click.getMonthClick());
-		addToMap(allKey, typekey, nodeMonth,monthClick);
+		addToMap(allKey, bean.getType(), nodeMonth,monthClick);
 		Node nodeWeek = new Node(bean,click.getWeekClick());
-		addToMap(allKey, typekey, nodeWeek,weekClick);
+		addToMap(allKey, bean.getType(), nodeWeek,weekClick);
 		return bean;
 	}
 
-	private void addToMap(String allKey, String typekey, Node nodeTotal,Map<String,LRUList<Node>> map) {
+	private void addToMap(int allKey, int typekey, Node nodeTotal,Map<Integer,LRUList<Node>> map) {
 		LRUList<Node> list = map.get(allKey);
 		if(null != list){
 			addToList(list,nodeTotal);
@@ -107,31 +104,31 @@ public class OrderListCache {
 		Collections.sort(list);
 	}
 
-	public LRUList<Node> getTotalClick(int type,int classified) {
-		String key = this.getKey(type, classified);
+	public LRUList<Node> getTotalClick(int type) {
+		String key =String.valueOf(type);
 		LRUList<Node> list = this.totalClick.get(key);
 		if(null == list){
-			list = this.loadOrderList(type, classified, ConstantUtil.TOTALCLICK, 100);
+			list = this.loadOrderList(type, ConstantUtil.TOTALCLICK, 100);
 			return list;
 		}
 		return list;
 	}
 
-	public LRUList<Node> getWeekClick(int type,int classified) {
-		String key = this.getKey(type, classified);
+	public LRUList<Node> getWeekClick(int type) {
+		String key = String.valueOf(type);
 		LRUList<Node> list = this.weekClick.get(key);
 		if(null == list){
-			list = this.loadOrderList(type, classified, ConstantUtil.WEEKCLICK, 100);
+			list = this.loadOrderList(type, ConstantUtil.WEEKCLICK, 100);
 			return list;
 		}
 		return list;
 	}
 
-	public LRUList<Node> getMonthClick(int type,int classified) {
-		String key = this.getKey(type, classified);
+	public LRUList<Node> getMonthClick(int type) {
+		String key = String.valueOf(type);
 		LRUList<Node> list = this.monthClick.get(key);
 		if(null == list){
-			list = this.loadOrderList(type, classified, ConstantUtil.MONTHCLICK, 100);
+			list = this.loadOrderList(type, ConstantUtil.MONTHCLICK, 100);
 			return list;
 		}
 		return list;

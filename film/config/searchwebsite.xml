@@ -8,4 +8,14 @@
 		<parser>com.film.searchengine.XiguaParser</parser>
 		<updateUrl>new.html</updateUrl>
 	</web>
+	<web>
+		<url>http://www.youdaili.cn/</url>
+		<parser>com.film.searchengine.IPParser</parser>
+		<updateUrl>http://www.youdaili.cn/</updateUrl>
+	</web>
+	<web>
+		<url>http://www.bbgyy.net/</url>
+		<parser>com.film.searchengine.BubuGaoParser</parser>
+		<updateUrl>zt/new.html</updateUrl>
+	</web>
 </webs>

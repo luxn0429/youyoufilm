@@ -17,7 +17,7 @@ public class ConstantUtil {
 	
 	///语言
 	public static enum LANGUAGE{
-		CHINESE (1), GUANGDONG (2), ENGLISH (3), KOREA (4), JAPANESE (5), THAI (6),RUSSIA(7);
+		CHINESE (1), GUANGDONG (2), ENGLISH (3), KOREA (4), JAPANESE (5), THAI (6),RUSSIA(7),FRANCE(8),INDIA(9);
 
         private final int index;
 
@@ -39,7 +39,7 @@ public class ConstantUtil {
 	 */
 	public static enum COUNTRY{
 		CHINA (1), HONGKONG(2), TAIWAN (3), KOREA (4), AMERICA (5),JAPA(6),
-		THAI (7),SINGAPORE(8),FRANCE(9),RUSSIA(10),OTHER(256);
+		THAI (7),SINGAPORE(8),FRANCE(9),RUSSIA(10),ENGLAND(11),INDIA(12),OTHER(256);
 
         private final int index;
 

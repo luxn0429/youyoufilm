@@ -28,11 +28,10 @@ public interface IVideoClickDAO {
 	
 	/**
 	 * 
-	 * @param type			电影或电视剧类别
-	 * @param classified	电影或电视剧或综艺等分类
+	 * @param type			视频分类类别
 	 * @param time			1. 所有，2 月 3周
 	 * @param number		数量
 	 * @return
 	 */
-	List<VideoClickBean> getClickOrder(int type,int classified,int time,int number);
+	List<VideoClickBean> getClickOrder(int type,int time,int number);
 }
