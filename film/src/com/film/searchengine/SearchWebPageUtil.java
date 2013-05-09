@@ -65,7 +65,7 @@ public class SearchWebPageUtil {
         }
         Logger.getLogger (SearchWebPageUtil.class).info ("LogNoticeForKmsocialOperation\tsearchGetURLContent\turl:" + urlStr+"\tresult:success\ttime:"+(System.currentTimeMillis()-time));
         try {
-			String res = new String(sb.toString().getBytes("UTF-8"),"UTF-8");
+			String res = new String(sb.toString().getBytes(),"UTF-8");
 			return res;
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -122,7 +122,7 @@ public class SearchWebPageUtil {
         }
         Logger.getLogger (SearchWebPageUtil.class).info ("LogNoticeForKmsocialOperation\tsearchGetURLContent\turl:" + urlStr+"\tresult:success\ttime:"+(System.currentTimeMillis()-time));
         try {
-			String res = new String(sb.toString().getBytes("UTF-8"),"UTF-8");
+			String res = new String(sb.toString().getBytes(),"UTF-8");
 			return res;
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -132,8 +132,8 @@ public class SearchWebPageUtil {
 
     public static void main (String args[]) {
     	PropertyConfigurator.configure ("log4j.properties");
-    	String url = "http://www.xigua110.com/";
-    	String html = SearchWebPageUtil.getUrlContent(url,"gb2312");
+    	String url = "http://www.xigua110.com/romance/zheyikeaibabaiduyingyin.htm";
+    	String html = SearchWebPageUtil.getUrlContent(url,"GB18030");
     	System.out.println(html);
     }
 }

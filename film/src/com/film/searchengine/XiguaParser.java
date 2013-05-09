@@ -30,7 +30,7 @@ import com.film.util.EscapeUnescape;
  *
  */
 public class XiguaParser extends SearchEngine {
-	private static final String encode = "gb2312";
+	private static final String encode = "GB18030";
 	private static ExecutorService EXEC=Executors.newFixedThreadPool(50);
 	
 	public XiguaParser(String url,String updateUrl){

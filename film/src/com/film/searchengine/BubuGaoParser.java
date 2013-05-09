@@ -32,7 +32,7 @@ import com.film.util.EscapeUnescape;
  *
  */
 public class BubuGaoParser extends SearchEngine {
-	private static final String encode = "gb2312";
+	private static final String encode = "GB18030";
 	private static ExecutorService EXEC=Executors.newFixedThreadPool(50);
 	
 	public BubuGaoParser(String url,String updateUrl){

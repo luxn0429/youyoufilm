@@ -71,6 +71,19 @@ public class IPParser extends SearchEngine {
 			result.add(ips[0].trim());
 			System.out.println(ips[0].trim());
 		}
+		Elements nextPage = doc.getElementsByAttributeValue("class", "pagelist");
+		if(null != nextPage){
+			Elements li = nextPage.first().getElementsByTag("li");
+			for(Element el :li){
+				if(el.text().contains("下一页")){
+					String nextUrl = el.attr("href");
+					Set<String> next = getProxy(this.url+"/"+nextUrl);
+					if(null != next && next.size()>0)
+						result.addAll(next);
+					break;
+				}
+			}
+		}
 		return result;
 	}
 
