@@ -348,6 +348,8 @@ public class XiguaParser extends SearchEngine {
 					try{
 						Element href = links.first();
 						String path = href.attr("href");
+						if(path.equals("http"))
+							return null;
 						String page = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 						Document docNative = Jsoup.parse(page);
 						Elements playing = docNative.getElementsByAttributeValue("class", "playing");
@@ -366,7 +368,7 @@ public class XiguaParser extends SearchEngine {
 						}
 					}catch(Exception e){
 						e.printStackTrace();
-						System.out.println(document.html());
+						Logger.getLogger(this.getClass()).info(document.html());
 					}
 				}
 				

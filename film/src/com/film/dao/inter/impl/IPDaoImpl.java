@@ -81,6 +81,8 @@ public class IPDaoImpl implements IIPDao {
 				bean.setState(rs.getInt("state"));
 				String proxy = rs.getString("proxy");
 				String[] split = proxy.split(":");
+				if(split.length<2)
+					continue;
 				bean.setIp(split[0]);
 				bean.setPort(Integer.valueOf(split[1]));
 				result.add(bean);
