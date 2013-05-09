@@ -35,21 +35,25 @@ public class IPParser extends SearchEngine {
 		if(ipbox.size() ==0){
 			return ;
 		}
-		Element ipelement = ipbox.first();
-		
-		Element ul = ipelement.getElementsByTag("ul").first();
-		Elements li = ul.getElementsByTag("li");
-		if(li.size() == 0)
-			return;
-		
-		Element alink = li.get(0).getElementsByTag("a").first();
-		String proxyHttp = alink.attr("href");
-		
-		Set<String> proxy = getProxy(proxyHttp);
-		for(String ip:proxy){
-			DaoFactory.getInstance().getIPDao().insert(ip);
+		for(Element ipelement:ipbox){
+			Element title = ipelement.getElementsByAttributeValue("class","title_font").first();
+			if(null != title && null != title.text() && (title.text().contains("国内代理") || title.text().contains("国外代理"))){
+				Element ul = ipelement.getElementsByTag("ul").first();
+				Elements li = ul.getElementsByTag("li");
+				if(li.size() == 0)
+					return;
+				
+				Element alink = li.get(0).getElementsByTag("a").first();
+				String proxyHttp = alink.attr("href");
+				
+				Set<String> proxy = getProxy(proxyHttp);
+				for(String ip:proxy){
+					System.out.println(ip);
+					DaoFactory.getInstance().getIPDao().insert(ip);
+				}
+				Logger.getLogger(this.getClass()).info("has download ips:"+proxy.size());
+			}
 		}
-		Logger.getLogger(this.getClass()).info("has download ips:"+proxy.size());
 		////重新加载可用的IP
 		IPCache.getInstance().loadIP();
 	}
@@ -64,7 +68,6 @@ public class IPParser extends SearchEngine {
 		Element span = ipdiv.first().getElementsByTag("span").first();
 		String content = span.html();
 		content =content.replaceAll("<([^>]*)>", "\r\n");
-		System.out.println(content);
 		String[] ipStr = content.split("\r\n");
 		for(int i=0;i<ipStr.length;i++){
 			String[] ips = ipStr[i].split("@");
@@ -75,9 +78,13 @@ public class IPParser extends SearchEngine {
 		if(null != nextPage){
 			Elements li = nextPage.first().getElementsByTag("li");
 			for(Element el :li){
-				if(el.text().contains("下一页")){
-					String nextUrl = el.attr("href");
-					Set<String> next = getProxy(this.url+"/"+nextUrl);
+				Element nextHref = el.getElementsByTag("a").first();
+				if(nextHref.text().contains("下一页")){
+					String nextUrl = nextHref.attr("href");
+					if(nextUrl.equals("#") || nextUrl.trim().length() == 0)
+						break;
+					String domain = href.substring(0, href.lastIndexOf("/"));
+					Set<String> next = getProxy(domain+"/"+nextUrl);
 					if(null != next && next.size()>0)
 						result.addAll(next);
 					break;
