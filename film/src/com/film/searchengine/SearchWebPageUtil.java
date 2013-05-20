@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.film.dao.bean.IPBean;
+import com.film.dao.factory.DaoFactory;
 
 public class SearchWebPageUtil {
 
@@ -92,7 +93,7 @@ public class SearchWebPageUtil {
         		}else{
         			conn = (HttpURLConnection) url.openConnection ();
         		}
-	            conn.setReadTimeout(30*1000);
+	            conn.setReadTimeout(120*1000);
 	        	conn.setRequestProperty ("User-Agent",
 	                    "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13");
 	            conn.setRequestMethod ("GET");
@@ -107,7 +108,12 @@ public class SearchWebPageUtil {
         	}catch(Exception e){
         		sb = new StringBuffer();
         		e.printStackTrace();
-        		Logger.getLogger (SearchWebPageUtil.class).error("LogNoticeForKmsocialOperation\tsearchGetURLContent\turl:" + urlStr+"\tresult:failed\ttime:"+(System.currentTimeMillis()-time));
+        		if(bean != null){
+        			IPCache.getInstance().rmoveIPBean(bean);
+        			DaoFactory.getInstance().getIPDao().modifyIPState(bean.getId(),1);
+        		}
+        		available = false;
+        		Logger.getLogger (SearchWebPageUtil.class).error("LogNoticeForKmsocialOperation\tsearchGetURLContent\turl:" + urlStr+"\tresult:failed\ttime:"+(System.currentTimeMillis()-time)+" "+e.getMessage()+"\t"+tryTime);
         	}finally{
         		if(null != br)
 					try {
