@@ -3,7 +3,6 @@
  */
 package com.film.searchengine;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -37,14 +36,6 @@ public class IPCache {
 		IPBean bean = ipQueue.poll();
 		ipQueue.add(bean);
 		return bean;
-	}
-	
-	public synchronized void rmoveIPBean(IPBean bean){
-		Iterator<IPBean> it = ipQueue.iterator();
-		while(it.hasNext()){
-			if(it.next().getIp().equals(bean.getIp()))
-				it.remove();
-		}
 	}
 
 }

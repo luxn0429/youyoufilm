@@ -127,19 +127,15 @@ public class XiguaParser extends SearchEngine {
 		}
 		@Override
 		public void run() {
-			if(null == videoBean){
-				String url = parseVideo(path);
-				while(null != url){
-					url = parseVideo(url);
-				}
-			}
+			if(null == videoBean)
+				parseVideo(path);
 			else
 				getVideoBean(path,videoBean);
 		}
 		/* (non-Javadoc)
 		 * @see com.film.searchengine.SearchEngine#parseVideo(int, java.lang.String)
 		 */
-		protected String parseVideo(String path) {
+		protected void parseVideo(String path) {
 			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Logger.getLogger(this.getClass()).info("get page:"+url+path);
 			Document doc = Jsoup.parse(html);
@@ -203,12 +199,10 @@ public class XiguaParser extends SearchEngine {
 				for(Element element:links){
 					if(element.text().contains("下一页")){
 						String url = element.attr("href");
-						return url;
-						//parseVideo(url);
+						parseVideo(url);
 					}
 				}
 			}
-			return null;
 		}
 		
 		public void getVideoBean(String path,VideoBean bean){
