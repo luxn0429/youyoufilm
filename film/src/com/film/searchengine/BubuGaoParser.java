@@ -110,15 +110,19 @@ public class BubuGaoParser extends SearchEngine {
 		}
 		@Override
 		public void run() {
-			if(null == videoBean)
-				parseVideo(path);
+			if(null == videoBean){
+				String next = parseVideo(path);
+				while(next != null){
+					next = parseVideo(next);
+				}
+			}
 			else
 				getVideoBean(path,videoBean);
 		}
 		/* (non-Javadoc)
 		 * @see com.film.searchengine.SearchEngine#parseVideo(int, java.lang.String)
 		 */
-		protected void parseVideo(String path) {
+		protected String parseVideo(String path) {
 			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Logger.getLogger(this.getClass()).info("get page:"+url+path);
 			Document doc = Jsoup.parse(html);
@@ -186,10 +190,12 @@ public class BubuGaoParser extends SearchEngine {
 				for(Element element:links){
 					if(element.text().contains("下一页")){
 						String url = element.attr("href");
-						parseVideo(url);
+						return url;
+						//parseVideo(url);
 					}
 				}
 			}
+			return null;
 		}
 		
 		public void getVideoBean(String path,VideoBean bean){
