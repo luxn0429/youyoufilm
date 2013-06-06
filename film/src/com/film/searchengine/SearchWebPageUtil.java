@@ -106,7 +106,7 @@ public class SearchWebPageUtil {
 	            available = true;
         	}catch(Exception e){
         		sb = new StringBuffer();
-        		e.printStackTrace();
+        		//e.printStackTrace();
         		Logger.getLogger (SearchWebPageUtil.class).error("LogNoticeForKmsocialOperation\tsearchGetURLContent\turl:" + urlStr+"\tresult:failed\ttime:"+(System.currentTimeMillis()-time));
         	}finally{
         		if(null != br)

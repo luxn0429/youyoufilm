@@ -108,7 +108,11 @@ public class VideoDao implements IVideoDAO {
 			if(filter.getType() != -1){
 				if(!isFirst)
 					select.append(" and ");
-				select.append(" type=").append(filter.getType());
+				if(filter.getType() % 100 == 0){
+					select.append(" type>=").append(filter.getType());
+					select.append(" and type<").append(filter.getType()+100);
+				}else
+					select.append(" type=").append(filter.getType());
 				isFirst = false;
 			}
 			
@@ -258,7 +262,11 @@ public class VideoDao implements IVideoDAO {
 			if(filter.getType() != -1){
 				if(!isFirst)
 					select.append(" and ");
-				select.append(" type=").append(filter.getType());
+				if(filter.getType() % 100 == 0){
+					select.append(" type>=").append(filter.getType());
+					select.append(" and type<").append(filter.getType()+100);
+				}else
+					select.append(" type=").append(filter.getType());
 				isFirst = false;
 			}
 			

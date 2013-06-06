@@ -32,4 +32,8 @@ public class TestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		this.doGet(request, response);
 	}
+	
+	public static void main(String[] arg){
+		System.out.println(101%100);
+	}
 }
