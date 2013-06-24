@@ -209,6 +209,10 @@ public class BubuGaoParser extends SearchEngine {
 		public void getVideoBean(String path,VideoBean bean){
 			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Document doc = Jsoup.parse(html);
+			
+			Map<Integer,List<VolumeBean>> volumeResult = parseVolume(doc,0);
+			if(null == volumeResult || volumeResult.size() == 0)
+				return ;
 			////
 			Element video = doc.getElementsByAttributeValue("class", "vcon").first();
 			
@@ -365,7 +369,14 @@ public class BubuGaoParser extends SearchEngine {
 				
 				if(id<0) return;
 			}
-			Map<Integer,List<VolumeBean>> volumeResult = parseVolume(doc,id);
+			
+
+			for(Map.Entry<Integer,List<VolumeBean>> entry:volumeResult.entrySet()){
+				for(VolumeBean volumebean:entry.getValue()){
+					volumebean.setBelongto(id);
+				}
+			}
+			
 			if(!DaoFactory.getInstance().getVolumeDAO().insert(volumeResult))
 				return;
 		}

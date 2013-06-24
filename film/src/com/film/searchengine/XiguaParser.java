@@ -222,6 +222,10 @@ public class XiguaParser extends SearchEngine {
 		public void getVideoBean(String path,VideoBean bean){
 			String html = SearchWebPageUtil.getUrlUseProxyContent(url+path,encode);
 			Document doc = Jsoup.parse(html);
+			
+			Map<Integer,List<VolumeBean>> volumeResult = parseVolume(doc,0);
+			if(null == volumeResult || volumeResult.size() == 0)
+				return;
 			Element video = doc.getElementsByAttributeValue("class", "vod_l").first();
 			Element pictureElement = video.getElementsByAttributeValue("class", "pic").first();
 			Element picture = pictureElement.getElementsByTag("img").first();
@@ -338,12 +342,19 @@ public class XiguaParser extends SearchEngine {
 					bean.setIntroduction(introduceElement.text().trim());
 				}
 			}
+			
+			
 			int id = DaoFactory.getInstance().getVideoDAO().insert(bean);
 			if(id <0){
 				id = (int)DaoFactory.getInstance().getVideoDAO().getVideoID(bean.getName());
 				if(id<0) return;
 			}
-			Map<Integer,List<VolumeBean>> volumeResult = parseVolume(doc,id);
+			
+			for(Map.Entry<Integer,List<VolumeBean>> entry:volumeResult.entrySet()){
+				for(VolumeBean volumebean:entry.getValue()){
+					volumebean.setBelongto(id);
+				}
+			}
 			if(!DaoFactory.getInstance().getVolumeDAO().insert(volumeResult))
 				return;
 		}
@@ -397,6 +408,7 @@ public class XiguaParser extends SearchEngine {
 			int end = volumnStr.lastIndexOf("'");
 			if(start>=0)
 				volumnStr = volumnStr.substring(start+1, end);
+			///播放器与剧集对应关系
 			Map<Integer,List<VolumeBean>> result = new HashMap<Integer,List<VolumeBean>>();
 			String[] platform = volumnStr.split("\\$\\$\\$");
 			for(String p:platform){
@@ -410,9 +422,11 @@ public class XiguaParser extends SearchEngine {
 				if(p2v[0].contains("百度")||p.toLowerCase().contains("bdhd")){
 					playerPlat = PLATFORM.BAIDU.getIndex();
 				}else if(p2v[0].contains("优酷") || p.toLowerCase().contains("youku")){
-					playerPlat = PLATFORM.YOUKU.getIndex();
+					//playerPlat = PLATFORM.YOUKU.getIndex();
+					continue;
 				}else if(p2v[0].contains("土豆") || p.toLowerCase().contains("tudou")){
-					playerPlat = PLATFORM.TUDOU.getIndex();
+					//playerPlat = PLATFORM.TUDOU.getIndex();
+					continue;
 				}else if(p2v[0].toLowerCase().contains("qvod") || p.toLowerCase().contains("qvod")){
 					playerPlat = PLATFORM.QVOD.getIndex();
 				}
